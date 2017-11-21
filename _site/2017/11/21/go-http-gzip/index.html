@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords"  content="Yezh Blog, James-Yip">
+    <meta name="theme-color" content="">
+    
+    <title>Golang gzip包源码分析 - Yezh Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Safari Webpage Icon    by-BY -->
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2017/11/21/go-http-gzip/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Yezh Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/negroni.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/negroni.jpg')
+    }
+
+    
+    header.intro-header .header-mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.6);
+    }
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#go" title="go">go</a>
+                        
+                    </div>
+                    <h1>Golang gzip包源码分析</h1>
+                    
+                    
+                    <h2 class="subheading">Gzip middleware for Negroni</h2>
+                    
+                    <span class="meta">Posted by Yezh on November 21, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h2 id="gzip概念">gzip概念</h2>
+<blockquote>
+  <p>GZIP最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的文件压缩。我们在Linux中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种数据压缩格式，或者说一种文件格式。</p>
+</blockquote>
+
+<p>gzip可用来对静态文件进行压缩, 以减少文件的传输时间和存储空间, 。大流量的WEB站点常常使用GZIP压缩技术来让减少响应时间, 提升用户的使用体验, 但同时压缩步骤的加入会增加服务器的负荷, 可以说是一种 “trade-off”。</p>
+
+<p>对于gzip, golang内置有<code class="highlighter-rouge">compress/gzip</code>包可供使用, 具体就不展开了。</p>
+
+<p>此处主要对用于 <a href="https://github.com/urfave/negroni">Negroni</a> 组件的<a href="https://github.com/phyber/negroni-gzip">gzip</a>包进行源码分析。</p>
+
+<p>该gzip包内部使用了go提供的 <code class="highlighter-rouge">compress/gzip</code> 包,  具体实现并不复杂。</p>
+
+<h2 id="用法">用法</h2>
+<p>下面为开发者提供的一个简单样例:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="n">import</span> <span class="p">(</span>
+    <span class="s2">"fmt"</span>
+    <span class="s2">"net/http"</span>
+
+    <span class="s2">"github.com/urfave/negroni"</span>
+    <span class="s2">"github.com/phyber/negroni-gzip/gzip"</span>
+<span class="p">)</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">mux</span> <span class="p">:=</span> <span class="n">http</span><span class="p">.</span><span class="n">NewServeMux</span><span class="p">()</span><span class="n">w</span><span class="p">.</span>
+    <span class="n">mux</span><span class="p">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">func</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="p">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">req</span> <span class="p">*</span><span class="n">http</span><span class="p">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+    	  <span class="n">fmt</span><span class="p">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s2">"Welcome to the home page!"</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="n">n</span> <span class="p">:=</span> <span class="n">negroni</span><span class="p">.</span><span class="n">Classic</span><span class="p">()</span>
+    <span class="n">n</span><span class="p">.</span><span class="n">Use</span><span class="p">(</span><span class="n">gzip</span><span class="p">.</span><span class="n">Gzip</span><span class="p">(</span><span class="n">gzip</span><span class="p">.</span><span class="n">DefaultCompression</span><span class="p">))</span>
+    <span class="n">n</span><span class="p">.</span><span class="n">UseHandler</span><span class="p">(</span><span class="n">mux</span><span class="p">)</span>
+    <span class="n">n</span><span class="p">.</span><span class="nf">Run</span><span class="p">(</span><span class="s2">":3000"</span><span class="p">)</span><span class="n">w</span><span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>该样例使用了negroni, 并在其中启用了gzip中间件, 该中间件在 request 预处理 或 response 后处理中对文件进行压缩或解压。</p>
+
+<h2 id="negroni-gzip-源码分析">negroni-gzip 源码分析</h2>
+
+<p>此处对 negroni-gzip 源码的分析分为两部分: 对其中定义的结构体和常量进行解释, 以及对其中实现的函数和方法进行分析。</p>
+
+<h3 id="结构体--常量">结构体 &amp; 常量</h3>
+
+<h4 id="gzipresponsewriter结构体">gzipResponseWriter结构体</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type gzipResponseWriter struct {
+	w *gzip.Writer
+	negroni.ResponseWriter
+	wroteHeader bool
+}
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>结构体成员</th>
+      <th>类型</th>
+      <th>解释</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>w</td>
+      <td>*gzip.Writer</td>
+      <td>用于写数据</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>negroni.ResponseWriter</td>
+      <td>匿名成员, gzipResponseWriter结构体实例可直接访问该接口的方法</td>
+    </tr>
+    <tr>
+      <td>wroteHeader</td>
+      <td>bool</td>
+      <td>记录是否已写了header, 避免重复写header</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="handler结构体">handler结构体</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type handler struct {
+	pool sync.Pool
+}
+</code></pre></div></div>
+<p>handler结构体中只有一个成员 pool (类型为sync包中定义的<a href="https://go-zh.org/pkg/sync/#Pool">Pool</a>结构体)</p>
+
+<p>pool 的作用是用于缓存那些已经分配了内存但是还未使用的数据, 以供后续使用。</p>
+
+<p>其Put方法可以将一个任意类型的数据放入pool中;</p>
+
+<p>还有一个Get方法则可以从pool中随机选择一个item, 将其从pool中移除, 并返回给调用者。</p>
+
+<h4 id="常量">常量</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const (
+	encodingGzip = "gzip"
+
+	headerAcceptEncoding  = "Accept-Encoding"
+	headerContentEncoding = "Content-Encoding"
+	headerContentLength   = "Content-Length"
+	headerContentType     = "Content-Type"
+	headerVary            = "Vary"
+	headerSecWebSocketKey = "Sec-WebSocket-Key"
+
+	BestCompression    = gzip.BestCompression
+	BestSpeed          = gzip.BestSpeed
+	DefaultCompression = gzip.DefaultCompression
+	NoCompression      = gzip.NoCompression
+)
+</code></pre></div></div>
+<p>注: 以上常量实际上是开发者直接从 <code class="highlighter-rouge">compress/gzip</code> 包中复制过来的。</p>
+
+<h3 id="gzip函数">Gzip函数</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Gzip returns a handler which will handle the Gzip compression in ServeHTTP.
+// Valid values for level are identical to those in the compress/gzip package.
+func Gzip(level int) *handler {
+	h := &amp;handler{}
+	h.pool.New = func() interface{} {
+		gz, err := gzip.NewWriterLevel(ioutil.Discard, level)
+		if err != nil {
+			panic(err)
+		}
+		return gz
+	}
+	return h
+}
+</code></pre></div></div>
+<p>Gzip函数初始化了一个空handler结构体
+并对其成员赋初值,
+然后返回该handler h, 传给negroni的Use方法。</p>
+
+<p>注: 由于handler结构体类型定义了其ServeHTTP方法(该方法下面会进行分析), 所以handler实现了negroni.Handler接口, 可以赋值给该接口)</p>
+
+<h3 id="handlerservehttp方法">handler.ServeHTTP方法</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// ServeHTTP wraps the http.ResponseWriter with a gzip.Writer.
+func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	// Skip compression if the client doesn't accept gzip encoding.
+	if !strings.Contains(r.Header.Get(headerAcceptEncoding), encodingGzip) {
+		next(w, r)
+		return
+	}
+
+	// Skip compression if client attempt WebSocket connection
+	if len(r.Header.Get(headerSecWebSocketKey)) &gt; 0 {
+		next(w, r)
+		return
+	}
+
+	// Retrieve gzip writer from the pool. Reset it to use the ResponseWriter.
+	// This allows us to re-use an already allocated buffer rather than
+	// allocating a new buffer for every request.
+	// We defer g.pool.Put here so that the gz writer is returned to the
+	// pool if any thing after here fails for some reason (functions in
+	// next could potentially panic, etc)
+	gz := h.pool.Get().(*gzip.Writer)
+	defer h.pool.Put(gz)
+	gz.Reset(w)
+
+	// Wrap the original http.ResponseWriter with negroni.ResponseWriter
+	// and create the gzipResponseWriter.
+	nrw := negroni.NewResponseWriter(w)
+	grw := gzipResponseWriter{gz, nrw, false}
+
+	// Call the next handler supplying the gzipResponseWriter instead of
+	// the original.
+	next(&amp;grw, r)
+
+	// Delete the content length after we know we have been written to.
+	grw.Header().Del(headerContentLength)
+
+	gz.Close()
+}
+</code></pre></div></div>
+
+<p>handler.ServeHTTP方法 的具体实现其实上述代码的注释中已经解释得很清晰了:</p>
+
+<ol>
+  <li>
+    <p>对于某些情况(客户端不支持gzip编码 或 客户端正尝试建立socket连接)跳过压缩步骤, 直接进入下一个中间件处理;</p>
+  </li>
+  <li>
+    <p>从pool中提取出 gzip writer, 并将其重置;</p>
+  </li>
+  <li>
+    <p>调用 negroni.NewResponseWriter 方法 得到一个封装了http.ResponseWriter 以及 一些与应答相关的信息 的 negroni.ResponseWriter结构体;</p>
+  </li>
+  <li>
+    <p>将从第二第三步中得到的 gzip writer 和 negroni.ResponseWriter 作为初值 初始化创建一个 gzipResponseWriter结构体实例, 并将其传给下一个中间件;</p>
+  </li>
+  <li>
+    <p>收尾工作。将gzipResponseWriter Header中的 <code class="highlighter-rouge">headerContentLength</code> 字段删除 并 关闭 gzip writer</p>
+  </li>
+</ol>
+
+<h3 id="gzipresponsewriterwriteheader方法">gzipResponseWriter.WriteHeader方法</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Check whether underlying response is already pre-encoded and disable
+// gzipWriter before the body gets written, otherwise encoding headers
+func (grw *gzipResponseWriter) WriteHeader(code int) {
+	headers := grw.ResponseWriter.Header()
+	if headers.Get(headerContentEncoding) == "" {
+		headers.Set(hegoaderContentEncoding, encodingGzip)
+		headers.Add(headerVary, headerAcceptEncoding)
+	} else {
+		grw.w.Reset(ioutil.Discard)
+		grw.w = nil
+	}
+	grw.ResponseWriter.WriteHeader(code)
+	grw.wroteHeader = true
+}
+</code></pre></div></div>
+
+<p>如注释中所说, 该方法首先会检查 response 是否已经进行了编码,</p>
+
+<p>如果是, 则不会再进行gzip编码(将gzipWriter无效化并将gzipResponseWriter中类型为*gzip.Writer的成员w置空);</p>
+
+<p>否则, 则会将header中的Content-Encoding字段 设为 “gzip”, 表示使用gzip编码。</p>
+
+<p>最后, 无论是否使用gzip编码, 都会调用 http.ResponseWriter.WriteHeader 方法 进行基本的 Header 写操作(基于传入的返回码code)</p>
+
+<p>注意: 由于gzipResponseWriter结构体中有一个匿名成员negroni.ResponseWriter, 而该成员(接口)中又有匿名成员http.ResponseWriter(其有一个WriteHeader方法),
+所以代码中的 <code class="highlighter-rouge">grw.ResponseWriter.WriteHeader(code)</code>
+其实还可以简化为 <code class="highlighter-rouge">grw.WriteHeader(code)</code></p>
+
+<h3 id="gzipresponsewriterwrite方法">gzipResponseWriter.Write方法</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Write writes bytes to the gzip.Writer. It will also set the Content-Type
+// header using the net/http library content type detection if the Content-Type
+// header was not set yet.
+func (grw *gzipResponseWriter) Write(b []byte) (int, error) {
+	if !grw.wroteHeader {
+		grw.WriteHeader(http.StatusOK)
+	}
+	if grw.w == nil {
+		return grw.ResponseWriter.Write(b)
+	}
+	if len(grw.Header().Get(headerContentType)) == 0 {
+		grw.Header().Set(headerContentType, http.DetectContentType(b))
+	}
+	return grw.w.Write(b)
+}
+</code></pre></div></div>
+
+<p>同样, 如注释所说, 该方法 写数据到gzip.Writer。
+另外, 如果header的Content-Type字段还未设置, 则会通过调用 net/http包中的DetectContentType函数来自动确定Content-Type, 并将其设置到header的Content-Type字段中</p>
+
+<hr />
+
+<p>至此, 对negroni-gzip 的源码分析就基本完成啦。</p>
+
+
+                <!-- <hr/> -->
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/11/16/go-http-src-analysis/" data-toggle="tooltip" data-placement="top" title="Golang http包源码分析">
+                        Previous<br>
+                        <span>Golang http包源码分析</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+
+                
+
+            </div>
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#blog" title="blog" rel="1">
+                                    blog
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#go" title="go" rel="2">
+                                    go
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#http" title="http" rel="1">
+                                    http
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+        //   visible: 'always',
+        //   placement: 'right',
+          icon: ''
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <!-- add jianshu add target = "_blank" to <a> by BY -->
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/James-Yip">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Yezh Blog 2017
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

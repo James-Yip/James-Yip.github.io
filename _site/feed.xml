@@ -5,9 +5,269 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 17 Nov 2017 08:27:17 +0000</pubDate>
-    <lastBuildDate>Fri, 17 Nov 2017 08:27:17 +0000</lastBuildDate>
+    <pubDate>Tue, 21 Nov 2017 16:43:23 +0000</pubDate>
+    <lastBuildDate>Tue, 21 Nov 2017 16:43:23 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Golang gzip包源码分析</title>
+        <description>&lt;h2 id=&quot;gzip概念&quot;&gt;gzip概念&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;GZIP最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的文件压缩。我们在Linux中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种数据压缩格式，或者说一种文件格式。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;gzip可用来对静态文件进行压缩, 以减少文件的传输时间和存储空间, 。大流量的WEB站点常常使用GZIP压缩技术来让减少响应时间, 提升用户的使用体验, 但同时压缩步骤的加入会增加服务器的负荷, 可以说是一种 “trade-off”。&lt;/p&gt;
+
+&lt;p&gt;对于gzip, golang内置有&lt;code class=&quot;highlighter-rouge&quot;&gt;compress/gzip&lt;/code&gt;包可供使用, 具体就不展开了。&lt;/p&gt;
+
+&lt;p&gt;此处主要对用于 &lt;a href=&quot;https://github.com/urfave/negroni&quot;&gt;Negroni&lt;/a&gt; 组件的&lt;a href=&quot;https://github.com/phyber/negroni-gzip&quot;&gt;gzip&lt;/a&gt;包进行源码分析。&lt;/p&gt;
+
+&lt;p&gt;该gzip包内部使用了go提供的 &lt;code class=&quot;highlighter-rouge&quot;&gt;compress/gzip&lt;/code&gt; 包,  具体实现并不复杂。&lt;/p&gt;
+
+&lt;h2 id=&quot;用法&quot;&gt;用法&lt;/h2&gt;
+&lt;p&gt;下面为开发者提供的一个简单样例:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;fmt&quot;&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;net/http&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;s2&quot;&gt;&quot;github.com/urfave/negroni&quot;&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;github.com/phyber/negroni-gzip/gzip&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewServeMux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HandleFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ResponseWriter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    	  &lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Welcome to the home page!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;negroni&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Classic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gzip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Gzip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gzip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DefaultCompression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;:3000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;该样例使用了negroni, 并在其中启用了gzip中间件, 该中间件在 request 预处理 或 response 后处理中对文件进行压缩或解压。&lt;/p&gt;
+
+&lt;h2 id=&quot;negroni-gzip-源码分析&quot;&gt;negroni-gzip 源码分析&lt;/h2&gt;
+
+&lt;p&gt;此处对 negroni-gzip 源码的分析分为两部分: 对其中定义的结构体和常量进行解释, 以及对其中实现的函数和方法进行分析。&lt;/p&gt;
+
+&lt;h3 id=&quot;结构体--常量&quot;&gt;结构体 &amp;amp; 常量&lt;/h3&gt;
+
+&lt;h4 id=&quot;gzipresponsewriter结构体&quot;&gt;gzipResponseWriter结构体&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type gzipResponseWriter struct {
+	w *gzip.Writer
+	negroni.ResponseWriter
+	wroteHeader bool
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;结构体成员&lt;/th&gt;
+      &lt;th&gt;类型&lt;/th&gt;
+      &lt;th&gt;解释&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;w&lt;/td&gt;
+      &lt;td&gt;*gzip.Writer&lt;/td&gt;
+      &lt;td&gt;用于写数据&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;negroni.ResponseWriter&lt;/td&gt;
+      &lt;td&gt;匿名成员, gzipResponseWriter结构体实例可直接访问该接口的方法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;wroteHeader&lt;/td&gt;
+      &lt;td&gt;bool&lt;/td&gt;
+      &lt;td&gt;记录是否已写了header, 避免重复写header&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;handler结构体&quot;&gt;handler结构体&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type handler struct {
+	pool sync.Pool
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;handler结构体中只有一个成员 pool (类型为sync包中定义的&lt;a href=&quot;https://go-zh.org/pkg/sync/#Pool&quot;&gt;Pool&lt;/a&gt;结构体)&lt;/p&gt;
+
+&lt;p&gt;pool 的作用是用于缓存那些已经分配了内存但是还未使用的数据, 以供后续使用。&lt;/p&gt;
+
+&lt;p&gt;其Put方法可以将一个任意类型的数据放入pool中;&lt;/p&gt;
+
+&lt;p&gt;还有一个Get方法则可以从pool中随机选择一个item, 将其从pool中移除, 并返回给调用者。&lt;/p&gt;
+
+&lt;h4 id=&quot;常量&quot;&gt;常量&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const (
+	encodingGzip = &quot;gzip&quot;
+
+	headerAcceptEncoding  = &quot;Accept-Encoding&quot;
+	headerContentEncoding = &quot;Content-Encoding&quot;
+	headerContentLength   = &quot;Content-Length&quot;
+	headerContentType     = &quot;Content-Type&quot;
+	headerVary            = &quot;Vary&quot;
+	headerSecWebSocketKey = &quot;Sec-WebSocket-Key&quot;
+
+	BestCompression    = gzip.BestCompression
+	BestSpeed          = gzip.BestSpeed
+	DefaultCompression = gzip.DefaultCompression
+	NoCompression      = gzip.NoCompression
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;注: 以上常量实际上是开发者直接从 &lt;code class=&quot;highlighter-rouge&quot;&gt;compress/gzip&lt;/code&gt; 包中复制过来的。&lt;/p&gt;
+
+&lt;h3 id=&quot;gzip函数&quot;&gt;Gzip函数&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Gzip returns a handler which will handle the Gzip compression in ServeHTTP.
+// Valid values for level are identical to those in the compress/gzip package.
+func Gzip(level int) *handler {
+	h := &amp;amp;handler{}
+	h.pool.New = func() interface{} {
+		gz, err := gzip.NewWriterLevel(ioutil.Discard, level)
+		if err != nil {
+			panic(err)
+		}
+		return gz
+	}
+	return h
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Gzip函数初始化了一个空handler结构体
+并对其成员赋初值,
+然后返回该handler h, 传给negroni的Use方法。&lt;/p&gt;
+
+&lt;p&gt;注: 由于handler结构体类型定义了其ServeHTTP方法(该方法下面会进行分析), 所以handler实现了negroni.Handler接口, 可以赋值给该接口)&lt;/p&gt;
+
+&lt;h3 id=&quot;handlerservehttp方法&quot;&gt;handler.ServeHTTP方法&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// ServeHTTP wraps the http.ResponseWriter with a gzip.Writer.
+func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	// Skip compression if the client doesn't accept gzip encoding.
+	if !strings.Contains(r.Header.Get(headerAcceptEncoding), encodingGzip) {
+		next(w, r)
+		return
+	}
+
+	// Skip compression if client attempt WebSocket connection
+	if len(r.Header.Get(headerSecWebSocketKey)) &amp;gt; 0 {
+		next(w, r)
+		return
+	}
+
+	// Retrieve gzip writer from the pool. Reset it to use the ResponseWriter.
+	// This allows us to re-use an already allocated buffer rather than
+	// allocating a new buffer for every request.
+	// We defer g.pool.Put here so that the gz writer is returned to the
+	// pool if any thing after here fails for some reason (functions in
+	// next could potentially panic, etc)
+	gz := h.pool.Get().(*gzip.Writer)
+	defer h.pool.Put(gz)
+	gz.Reset(w)
+
+	// Wrap the original http.ResponseWriter with negroni.ResponseWriter
+	// and create the gzipResponseWriter.
+	nrw := negroni.NewResponseWriter(w)
+	grw := gzipResponseWriter{gz, nrw, false}
+
+	// Call the next handler supplying the gzipResponseWriter instead of
+	// the original.
+	next(&amp;amp;grw, r)
+
+	// Delete the content length after we know we have been written to.
+	grw.Header().Del(headerContentLength)
+
+	gz.Close()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;handler.ServeHTTP方法 的具体实现其实上述代码的注释中已经解释得很清晰了:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;对于某些情况(客户端不支持gzip编码 或 客户端正尝试建立socket连接)跳过压缩步骤, 直接进入下一个中间件处理;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;从pool中提取出 gzip writer, 并将其重置;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;调用 negroni.NewResponseWriter 方法 得到一个封装了http.ResponseWriter 以及 一些与应答相关的信息 的 negroni.ResponseWriter结构体;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将从第二第三步中得到的 gzip writer 和 negroni.ResponseWriter 作为初值 初始化创建一个 gzipResponseWriter结构体实例, 并将其传给下一个中间件;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;收尾工作。将gzipResponseWriter Header中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;headerContentLength&lt;/code&gt; 字段删除 并 关闭 gzip writer&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;gzipresponsewriterwriteheader方法&quot;&gt;gzipResponseWriter.WriteHeader方法&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Check whether underlying response is already pre-encoded and disable
+// gzipWriter before the body gets written, otherwise encoding headers
+func (grw *gzipResponseWriter) WriteHeader(code int) {
+	headers := grw.ResponseWriter.Header()
+	if headers.Get(headerContentEncoding) == &quot;&quot; {
+		headers.Set(hegoaderContentEncoding, encodingGzip)
+		headers.Add(headerVary, headerAcceptEncoding)
+	} else {
+		grw.w.Reset(ioutil.Discard)
+		grw.w = nil
+	}
+	grw.ResponseWriter.WriteHeader(code)
+	grw.wroteHeader = true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如注释中所说, 该方法首先会检查 response 是否已经进行了编码,&lt;/p&gt;
+
+&lt;p&gt;如果是, 则不会再进行gzip编码(将gzipWriter无效化并将gzipResponseWriter中类型为*gzip.Writer的成员w置空);&lt;/p&gt;
+
+&lt;p&gt;否则, 则会将header中的Content-Encoding字段 设为 “gzip”, 表示使用gzip编码。&lt;/p&gt;
+
+&lt;p&gt;最后, 无论是否使用gzip编码, 都会调用 http.ResponseWriter.WriteHeader 方法 进行基本的 Header 写操作(基于传入的返回码code)&lt;/p&gt;
+
+&lt;p&gt;注意: 由于gzipResponseWriter结构体中有一个匿名成员negroni.ResponseWriter, 而该成员(接口)中又有匿名成员http.ResponseWriter(其有一个WriteHeader方法),
+所以代码中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;grw.ResponseWriter.WriteHeader(code)&lt;/code&gt;
+其实还可以简化为 &lt;code class=&quot;highlighter-rouge&quot;&gt;grw.WriteHeader(code)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;gzipresponsewriterwrite方法&quot;&gt;gzipResponseWriter.Write方法&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Write writes bytes to the gzip.Writer. It will also set the Content-Type
+// header using the net/http library content type detection if the Content-Type
+// header was not set yet.
+func (grw *gzipResponseWriter) Write(b []byte) (int, error) {
+	if !grw.wroteHeader {
+		grw.WriteHeader(http.StatusOK)
+	}
+	if grw.w == nil {
+		return grw.ResponseWriter.Write(b)
+	}
+	if len(grw.Header().Get(headerContentType)) == 0 {
+		grw.Header().Set(headerContentType, http.DetectContentType(b))
+	}
+	return grw.w.Write(b)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;同样, 如注释所说, 该方法 写数据到gzip.Writer。
+另外, 如果header的Content-Type字段还未设置, 则会通过调用 net/http包中的DetectContentType函数来自动确定Content-Type, 并将其设置到header的Content-Type字段中&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;至此, 对negroni-gzip 的源码分析就基本完成啦。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/2017/11/21/go-http-gzip/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/21/go-http-gzip/</guid>
+        
+        <category>go</category>
+        
+        
+      </item>
     
       <item>
         <title>Golang http包源码分析</title>
