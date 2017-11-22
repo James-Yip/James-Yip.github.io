@@ -77,7 +77,7 @@ type gzipResponseWriter struct {
 | wroteHeader | boo
 此处对 negroni-gzip 源码的分析分为两部分:l                   | 记录是否已写了header, 避免重复写header                       |
 
-#### handler结构体de
+#### handler结构体
 ```
 type handler struct {
 	pool sync.Pool
