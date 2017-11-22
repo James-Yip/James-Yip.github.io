@@ -70,12 +70,11 @@ type gzipResponseWriter struct {
 }
 ```
 
-| 结构体成员  | 类型                   | 解释                                                         |
-| ----------- | ---------------------- | ------------------------------------------------------------ |
-| w           | *gzip.Writer           | 用于写数据                                                   |
+| 结构体成员  | 类型                   | 解释                                                     |
+| ----------- | ---------------------- | -------------------------------------------------------- |
+| w           | *gzip.Writer           | 用于写数据                                               |
 | -           | negroni.ResponseWriter | 匿名成员, gzipResponseWriter结构体可直接访问该接口的方法 |
-| wroteHeader | boo
-此处对 negroni-gzip 源码的分析分为两部分:l                   | 记录是否已写了header, 避免重复写header                       |
+| wroteHeader | bool                   | 记录是否已写了header, 避免重复写header                   |
 
 #### handler结构体
 ```

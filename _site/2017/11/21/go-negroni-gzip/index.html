@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2017/11/21/go-http-gzip/">
+    <link rel="canonical" href="http://localhost:4000/2017/11/21/go-negroni-gzip/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -283,18 +283,13 @@
     </tr>
     <tr>
       <td>wroteHeader</td>
-      <td>boo</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>此处对 negroni-gzip 源码的分析分为两部分:l</td>
+      <td>bool</td>
       <td>记录是否已写了header, 避免重复写header</td>
-      <td> </td>
     </tr>
   </tbody>
 </table>
 
-<h4 id="handler结构体de">handler结构体de</h4>
+<h4 id="handler结构体">handler结构体</h4>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type handler struct {
 	pool sync.Pool
 }

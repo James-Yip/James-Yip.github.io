@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 22 Nov 2017 00:27:31 +0000</pubDate>
-    <lastBuildDate>Wed, 22 Nov 2017 00:27:31 +0000</lastBuildDate>
+    <pubDate>Wed, 22 Nov 2017 16:36:52 +0000</pubDate>
+    <lastBuildDate>Wed, 22 Nov 2017 16:36:52 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -88,18 +88,13 @@
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;wroteHeader&lt;/td&gt;
-      &lt;td&gt;boo&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;此处对 negroni-gzip 源码的分析分为两部分:l&lt;/td&gt;
+      &lt;td&gt;bool&lt;/td&gt;
       &lt;td&gt;记录是否已写了header, 避免重复写header&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h4 id=&quot;handler结构体de&quot;&gt;handler结构体de&lt;/h4&gt;
+&lt;h4 id=&quot;handler结构体&quot;&gt;handler结构体&lt;/h4&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type handler struct {
 	pool sync.Pool
 }
@@ -268,8 +263,8 @@ func (grw *gzipResponseWriter) Write(b []byte) (int, error) {
 &lt;p&gt;至此, 对negroni-gzip 的源码分析就基本完成啦。&lt;/p&gt;
 </description>
         <pubDate>Tue, 21 Nov 2017 23:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2017/11/21/go-http-gzip/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/11/21/go-http-gzip/</guid>
+        <link>http://localhost:4000/2017/11/21/go-negroni-gzip/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/21/go-negroni-gzip/</guid>
         
         <category>go</category>
         
