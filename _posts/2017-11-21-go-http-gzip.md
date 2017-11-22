@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "Golang gzip包源码分析"
+title:      "Go negroni-gzip源码分析"
 subtitle:   "Gzip middleware for Negroni"
-date:       2017-11-21
+date:       2017-11-21 23:00
 author:     "Yezh"
 header-img: "img/negroni.jpg"
 header-mask:  true
@@ -17,7 +17,7 @@ tags:
 
 gzip可用来对静态文件进行压缩, 以减少文件的传输时间和存储空间, 。大流量的WEB站点常常使用GZIP压缩技术来让减少响应时间, 提升用户的使用体验, 但同时压缩步骤的加入会增加服务器的负荷, 可以说是一种 "trade-off"。
 
-对于gzip, golang内置有`compress/gzip`包可供使用, 具体就不展开了。
+对于gzip, golang内置有`compress/gzip`包可供使用。
 
 此处主要对用于 [Negroni](https://github.com/urfave/negroni) 组件的[gzip](https://github.com/phyber/negroni-gzip)包进行源码分析。
 
@@ -55,7 +55,9 @@ func main() {
 
 ## negroni-gzip 源码分析
 
-此处对 negroni-gzip 源码的分析分为两部分: 对其中定义的结构体和常量进行解释, 以及对其中实现的函数和方法进行分析。
+此处对 negroni-gzip 源码的分析分为两部分:
+
+对其中定义的结构体和常量的解释, 以及对函数和方法的分析。
 
 ### 结构体 & 常量
 
@@ -71,10 +73,11 @@ type gzipResponseWriter struct {
 | 结构体成员  | 类型                   | 解释                                                         |
 | ----------- | ---------------------- | ------------------------------------------------------------ |
 | w           | *gzip.Writer           | 用于写数据                                                   |
-| -           | negroni.ResponseWriter | 匿名成员, gzipResponseWriter结构体实例可直接访问该接口的方法 |
-| wroteHeader | bool                   | 记录是否已写了header, 避免重复写header                       |
+| -           | negroni.ResponseWriter | 匿名成员, gzipResponseWriter结构体可直接访问该接口的方法 |
+| wroteHeader | boo
+此处对 negroni-gzip 源码的分析分为两部分:l                   | 记录是否已写了header, 避免重复写header                       |
 
-#### handler结构体
+#### handler结构体de
 ```
 type handler struct {
 	pool sync.Pool
@@ -82,7 +85,7 @@ type handler struct {
 ```
 handler结构体中只有一个成员 pool (类型为sync包中定义的[Pool](https://go-zh.org/pkg/sync/#Pool)结构体)
 
-pool 的作用是用于缓存那些已经分配了内存但是还未使用的数据, 以供后续使用。
+pool 的作用是用于缓存那些已经分配了内存但是暂时还未使用的数据, 以供后续使用。(同时pool能够保证多个goroutines同时使用它时的安全性)
 
 其Put方法可以将一个任意类型的数据放入pool中;
 
@@ -130,7 +133,7 @@ Gzip函数初始化了一个空handler结构体
 并对其成员赋初值,
 然后返回该handler h, 传给negroni的Use方法。
 
-注: 由于handler结构体类型定义了其ServeHTTP方法(该方法下面会进行分析), 所以handler实现了negroni.Handler接口, 可以赋值给该接口)
+注: 由于handler结构体类型定义了其ServeHTTP方法(该方法下面会进行分析), 所以handler实现了negroni.Handler接口(negroni的Use方法所需的传入参数), 可以赋值给该接口。
 
 
 ### handler.ServeHTTP方法
@@ -138,7 +141,7 @@ Gzip函数初始化了一个空handler结构体
 // ServeHTTP wraps the http.ResponseWriter with a gzip.Writer.
 func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 	// Skip compression if the client doesn't accept gzip encoding.
-	if !strings.Contains(r.Header.Get(headerAcceptEncoding), encodingGzip) {
+	if !strings.Contains(r.Header.Get(headerAcceptEncoding), encodingGzip) {juhao
 		next(w, r)
 		return
 	}
@@ -157,7 +160,7 @@ func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.Ha
 	// next could potentially panic, etc)
 	gz := h.pool.Get().(*gzip.Writer)
 	defer h.pool.Put(gz)
-	gz.Reset(w)
+	gz.Reset(w)juhao
 
 	// Wrap the original http.ResponseWriter with negroni.ResponseWriter
 	// and create the gzipResponseWriter.
@@ -181,7 +184,7 @@ handler.ServeHTTP方法 的具体实现其实上述代码的注释中已经解�
 
 2. 从pool中提取出 gzip writer, 并将其重置;
 
-3. 调用 negroni.NewResponseWriter 方法 得到一个封装了http.ResponseWriter 以及 一些与应答相关的信息 的 negroni.ResponseWriter结构体;
+3. 调用 negroni.NewResponseWriter 方法 得到一个封装了http.ResponseWriter 以及 其它一些方法 的 negroni.ResponseWriter接口;(具体可见[negroni相应源码](https://github.com/urfave/negroni/blob/master/response_writer.go))
 
 4. 将从第二第三步中得到的 gzip writer 和 negroni.ResponseWriter 作为初值 初始化创建一个 gzipResponseWriter结构体实例, 并将其传给下一个中间件;
 
@@ -241,7 +244,7 @@ func (grw *gzipResponseWriter) Write(b []byte) (int, error) {
 ```
 
 同样, 如注释所说, 该方法 写数据到gzip.Writer。
-另外, 如果header的Content-Type字段还未设置, 则会通过调用 net/http包中的DetectContentType函数来自动确定Content-Type, 并将其设置到header的Content-Type字段中
+另外, 如果header的Content-Type字段还未设置, 则会通过调用 net/http包中的DetectContentType函数来自动确定Content-Type, 并将其设置到header的Content-Type字段中。
 
 ---
 
