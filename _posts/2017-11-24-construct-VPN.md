@@ -4,8 +4,7 @@ title:      "利用OpenVPN搭建简单VPN"
 subtitle:   "Ubuntu16.04搭建VPN"
 date:       2017-11-23 23:00
 author:     "Yezh"
-header-img: "img/negroni.jpg"
-header-mask:  true
+header-img: "img/post-bg-unix-linux.jpg"
 catalog:      true
 published:    true
 tags:
