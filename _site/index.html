@@ -199,6 +199,41 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2017/11/23/construct-VPN/">
+        <h2 class="post-title">
+            利用OpenVPN搭建简单VPN
+        </h2>
+        
+        <h3 class="post-subtitle">
+            Ubuntu16.04搭建VPN
+        </h3>
+        
+        <div class="post-content-preview">
+            安装OpenVPN
+
+$ sudo apt-get install openvpn easy-rsa
+
+
+安装完毕后, 在终端输入 openvpn 即可以看到一系列用法提示。
+
+注: 此处同时安装了 easy-rsa 脚本工具, 用来生成所需证书。
+
+
+
+生成OpenVPN相关证书
+
+创建CA目录
+
+选择一个目录, 在该目录下建立 openvpn-ca 目录(命名随意, 易懂即可), 并将上...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Yezh on November 23, 2017
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/11/21/go-negroni-gzip/">
         <h2 class="post-title">
             Go negroni-gzip源码分析
@@ -330,6 +365,12 @@ Yezh 的 blog 开通啦!
                             
                                 <a href="/tags/#http" title="http" rel="1">
                                     http
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#VPN" title="VPN" rel="1">
+                                    VPN
                                 </a>
                             
                         
