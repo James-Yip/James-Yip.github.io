@@ -10,7 +10,7 @@
     <meta name="keywords"  content="Yezh Blog, James-Yip">
     <meta name="theme-color" content="">
     
-    <title>Go negroni-gzip源码分析 - Yezh Blog</title>
+    <title>系统分析与设计 Homework1 - Yezh Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2017/11/21/go-negroni-gzip/">
+    <link rel="canonical" href="http://localhost:4000/2018/03/12/SAD-HW1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -154,13 +154,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/negroni.jpg" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-blue.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/negroni.jpg')
+        background-image: url('/img/post-bg-blue.jpg')
     }
 
     
@@ -180,15 +180,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#go" title="go">go</a>
+                        <a class="tag" href="/tags/#homework" title="homework">homework</a>
                         
                     </div>
-                    <h1>Go negroni-gzip源码分析</h1>
+                    <h1>系统分析与设计 Homework1</h1>
                     
                     
-                    <h2 class="subheading">Gzip middleware for Negroni</h2>
+                    <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Yezh on November 21, 2017</span>
+                    <span class="meta">Posted by Yezh on March 12, 2018</span>
                 </div>
             </div>
         </div>
@@ -206,256 +206,321 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="gzip概念">gzip概念</h2>
-<blockquote>
-  <p>GZIP最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的文件压缩。我们在Linux中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种数据压缩格式，或者说一种文件格式。</p>
-</blockquote>
+				<h2 id="1-简单题">1. 简单题</h2>
 
-<p>gzip可用来对静态文件进行压缩, 以减少文件的传输时间和存储空间, 。大流量的WEB站点常常使用GZIP压缩技术来让减少响应时间, 提升用户的使用体验, 但同时压缩步骤的加入会增加服务器的负荷, 可以说是一种 “trade-off”。</p>
+<hr />
 
-<p>对于gzip, golang内置有<code class="highlighter-rouge">compress/gzip</code>包可供使用。</p>
+<h3 id="软件工程定义">软件工程定义</h3>
 
-<p>此处主要对用于 <a href="https://github.com/urfave/negroni">Negroni</a> 组件的<a href="https://github.com/phyber/negroni-gzip">gzip</a>包进行源码分析。</p>
+<ul>
+  <li>
+    <p>IEEE:
+  (1) 将系统化、规范化、可度量的方法应用与软件的开发、运行和维护的过程, 即将工程化应用于软件中。
+  (2) 对(1)中所述方法的研究。</p>
+  </li>
+  <li>
+    <p>软件工程是指导计算机软件开发和维护的工程学科。采用工程的概念、原理、技术和方法来开发与维护软件,把经过实践考验而证明正确的管理技术和当前能够得到的最的技术方法结合起来,这就是软件工程。</p>
+  </li>
+</ul>
 
-<p>该gzip包内部使用了go提供的 <code class="highlighter-rouge">compress/gzip</code> 包,  具体实现并不复杂。</p>
+<hr />
 
-<h2 id="用法">用法</h2>
-<p>下面为开发者提供的一个简单样例:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+<h3 id="阅读经典名著人月神话等资料解释-software-crisiscocomo-模型">阅读经典名著“人月神话”等资料，解释 software crisis、COCOMO 模型。</h3>
 
-<span class="n">import</span> <span class="p">(</span>
-    <span class="s2">"fmt"</span>
-    <span class="s2">"net/http"</span>
+<h4 id="软件危机software-crisis">软件危机(software crisis)</h4>
 
-    <span class="s2">"github.com/urfave/negroni"</span>
-    <span class="s2">"github.com/phyber/negroni-gzip/gzip"</span>
-<span class="p">)</span>
+<h5 id="背景">背景</h5>
+<p>六十年代以来,随着计算机应用需求的驱动,系统软件和应用软件有很大的发展,如操作系统,编译系统和大型应用软件等。由于软件生产的复杂性和高成本,使大型软件的生产出现了很大的困难,即出现软件危机。</p>
 
-<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">mux</span> <span class="p">:=</span> <span class="n">http</span><span class="p">.</span><span class="n">NewServeMux</span><span class="p">()</span><span class="n">w</span><span class="p">.</span>
-    <span class="n">mux</span><span class="p">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">func</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="p">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">req</span> <span class="p">*</span><span class="n">http</span><span class="p">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
-    	  <span class="n">fmt</span><span class="p">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s2">"Welcome to the home page!"</span><span class="p">)</span>
-    <span class="p">})</span>
+<h5 id="表现形式">表现形式</h5>
+<ul>
+  <li>软件开发成本日益增长
+    <ul>
+      <li>开发成本超出预算</li>
+    </ul>
+  </li>
+  <li>软件开发进度难以控制
+    <ul>
+      <li>实际进度比预定计划一再拖延</li>
+    </ul>
+  </li>
+  <li>用户对 “已完成” 系统不满意的现象经常发生
+    <ul>
+      <li>用户需求不明确</li>
+    </ul>
+  </li>
+  <li>软件产品的质量不可靠
+    <ul>
+      <li>Bug &amp; Patch</li>
+    </ul>
+  </li>
+  <li>软件的可维护程度低
+    <ul>
+      <li>数量不断膨胀的软件产品缺乏适当的文档资料</li>
+    </ul>
+  </li>
+  <li>软件开发生产率跟不上硬件的发展和人们需求的增长</li>
+</ul>
 
-    <span class="n">n</span> <span class="p">:=</span> <span class="n">negroni</span><span class="p">.</span><span class="n">Classic</span><span class="p">()</span>
-    <span class="n">n</span><span class="p">.</span><span class="n">Use</span><span class="p">(</span><span class="n">gzip</span><span class="p">.</span><span class="n">Gzip</span><span class="p">(</span><span class="n">gzip</span><span class="p">.</span><span class="n">DefaultCompression</span><span class="p">))</span>
-    <span class="n">n</span><span class="p">.</span><span class="n">UseHandler</span><span class="p">(</span><span class="n">mux</span><span class="p">)</span>
-    <span class="n">n</span><span class="p">.</span><span class="nf">Run</span><span class="p">(</span><span class="s2">":3000"</span><span class="p">)</span><span class="n">w</span><span class="p">.</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<h5 id="原因">原因</h5>
+<ul>
+  <li>软件危机的根源
+    <ul>
+      <li>软件的大量需求与软件生产力效率之间的矛盾</li>
+      <li>软件系统的复杂性与软件开发方法之间的矛盾</li>
+    </ul>
+  </li>
+  <li>软件本身的特点
+    <ul>
+      <li>软件是一种抽象逻辑</li>
+      <li>软件是开发人员的智力劳动成果</li>
+      <li>软件具备强烈的个性化特征</li>
+      <li>软件规模日趋庞大,实现的业务逻辑与流程复杂</li>
+    </ul>
+  </li>
+  <li>软件开发的客观因素
+    <ul>
+      <li>系统需求分析不足</li>
+      <li>开发周期管理不善</li>
+      <li>开发过程缺乏规范</li>
+      <li>质量控制标准规程滞后</li>
+      <li>软件维护计划被忽视</li>
+    </ul>
+  </li>
+  <li>产业因素
+    <ul>
+      <li>软件企业的作坊式管理</li>
+      <li>软件企业规模的急剧膨胀</li>
+    </ul>
+  </li>
+</ul>
 
-<p>该样例使用了negroni, 并在其中启用了gzip中间件, 该中间件在 request 预处理 或 response 后处理中对文件进行压缩或解压。</p>
+<h5 id="危机的消除">危机的消除</h5>
 
-<h2 id="negroni-gzip-源码分析">negroni-gzip 源码分析</h2>
+<ul>
+  <li>解决途径
+    <ul>
+      <li>正确认识计算机软件的内涵 (软件≠程序)</li>
+      <li>充分认识到软件开发不是某种个体劳动的神秘技巧,而是一种组织良好、管理严密、协同配合的工程活动</li>
+      <li>采用成熟的软件开发技术和方法</li>
+      <li>开发和使用适当的软件工具</li>
+    </ul>
+  </li>
+  <li>实施办法
+    <ul>
+      <li>组织管理
+        <ul>
+          <li>采用工程项目管理方法</li>
+        </ul>
+      </li>
+      <li>技术措施
+        <ul>
+          <li>采用软件开发技术、方法与软件工具</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-<p>此处对 negroni-gzip 源码的分析分为两部分:</p>
+<h4 id="cocomo模型">COCOMO模型</h4>
 
-<p>对其中定义的结构体和常量的解释, 以及对函数和方法的分析。</p>
+<p>COCOMO，英文全称为constructive cost model，中文为构造性成本模型。它是一种精确、易于使用的，基于模型的成本估算方法，最早由勃姆 （Boehm） 于 1981 年提出。从本质上说是一种参数化的项目估算方法，参数建模是把项目的某些特征作为参数，通过建立一个数字模型预测项目成本（类似于居住面积作为参数计算的整体的住房成本）。</p>
 
-<h3 id="结构体--常量">结构体 &amp; 常量</h3>
+<p>在该模型中使用的基本量有以下几个： （1）DSI（源指令条数），定义为代码行数，包括除
+注释行以外的全部代码。若一行有两个语句，则算做一条指令。（2）MM（度量单位为人月）表示开发工作量。 （3）TDEV（度量单位为月）表示开发进度，由工作量决定。 （4）COCOMO 模型重点考虑 15 种影响软件工作量的因素，并通过定义乘法因子，从而准确、合理地估算软件的工作量。</p>
 
-<h4 id="gzipresponsewriter结构体">gzipResponseWriter结构体</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type gzipResponseWriter struct {
-	w *gzip.Writer
-	negroni.ResponseWriter
-	wroteHeader bool
-}
-</code></pre></div></div>
+<hr />
+
+<h3 id="软件生命周期">软件生命周期。</h3>
+
+<ul>
+  <li>软件生命周期的概念
+    <ul>
+      <li>计算机软件有一个孕育、诞生、成长、成熟、衰亡的生存过程,即软件的生命周期 (也称软件开发生命周期 <strong>SDLC</strong> 或软件开发过程)。软件生命周期被划分为若干阶段,每个阶段有明确的任务,从而使规模、结构和管理复杂的软件开发过程得到适当的控制和管理。</li>
+      <li>软件生命周期包括可行性分析与开发计划、需求分析、设计 (概要设计和详细设计)、编码实现、测试、运行与维护等活动,将这些活动以适当的方式分配到不同的阶段去完成。</li>
+    </ul>
+  </li>
+  <li>软件生命周期的6个阶段
+    <ul>
+      <li>可行性分析与计划阶段
+        <ul>
+          <li>确定软件开发的总体目标,给出功能、性能、可靠性以及接口
+  等方面的要求,进行完成可行性分析。</li>
+          <li>估计可利用的资源 (硬件、软件、人力等)、成本、效益、开发
+  进度,进行投资-收益分析,制订开发计划。</li>
+          <li>提交可行性分析报告、开发计划等文档。</li>
+        </ul>
+      </li>
+      <li>需求分析阶段
+        <ul>
+          <li>分析用户提出的要求,给出需求详细定义,确定软件系统的各
+  项功能、性能需求和设计约束,确定对文档编制的要求。</li>
+          <li>提交软件需求说明、软件规格说明、数据要求说明等文档和初
+  步的用户手册。</li>
+        </ul>
+      </li>
+      <li>设计阶段
+        <ul>
+          <li>概要设计: 把各项需求转换成软件的体系结构。结构中每一组
+  成部分都是意义明确的模块,每个模块都和某些需求相对应。</li>
+          <li>详细设计: 对每个模块所要完成的工作进行具体的描述,提供
+  源程序编写的直接依据。</li>
+          <li>提交结构设计说明、详细设计说明和测试计划初稿等文档。</li>
+        </ul>
+      </li>
+      <li>实现阶段
+        <ul>
+          <li>完成源程序的编码、编译 (或汇编) 和排错调试,得到没有语法
+  错误的程序清单。程序结构良好、清晰易读,且与设计相一致</li>
+          <li>编写进度日报、周报和月报 (取决于项目的重要性和规模)。</li>
+          <li>提交用户手册、操作手册等面向用户的文档的编写工作。</li>
+          <li>编制测试计划。</li>
+        </ul>
+      </li>
+      <li>测试阶段
+        <ul>
+          <li>全面测试目标软件系统,并检查审阅已编制的文档,提交测试
+  分析报告。逐项评价所生产的程序、文档以及开发工作本身,
+  提交项目开发总结报告。</li>
+          <li>在整个开发过程中 (即前五个阶段中),开发集体需要按月编写
+  开发进度月报。</li>
+        </ul>
+      </li>
+      <li>运行与维护阶段
+        <ul>
+          <li>软件提交给用户后,在运行使用中得到持续维护,根据用户新
+  提出的需求进行必要而且可能的扩充、删改、更新和升级。</li>
+          <li>软件维护包括改正性维护 (发现错误)、适应性维护 (适应运行环
+  境变化) 和完善性维护 (增强功能)。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="按照-swebok-的-ka-划分本课程关注哪些-ka-或-知识领域">按照 SWEBok 的 KA 划分，本课程关注哪些 KA 或 知识领域？</h3>
+
+<ul>
+  <li>软件需求(software requirements)</li>
+  <li>软件设计(software design)</li>
+  <li>软件构建(software construction)</li>
+  <li>软件工程过程(software engineering process)</li>
+  <li>软件工程工具与方法(software engineering models and methods)</li>
+</ul>
+
+<hr />
+
+<h3 id="解释-cmmi-的五个级别例如level-1---initial无序自发生产模式">解释 CMMI 的五个级别。例如：Level 1 - Initial：无序，自发生产模式。</h3>
+
+<p>1． 初始级(Level1 - Initial)
+　　软件过程无序，有时甚至混乱，对过程几乎没有定义，成功取决于个人努力。管理是反应式的。
+2．可管理级(Level2 - Managed)
+　　建立了基本的项目管理过程来跟踪费用、进度和功能特性。制定了必要的过程纪律，能重复早先类似应用项目取得的成功经验。
+3． 已定义级(Level3 - Defined)
+　　已将软件管理和工程两方面的过程文档化、标准化，并综合成该组织的标准软件过程。所有项目均使用经批准、剪裁的标准软件过程来开发和维护软件，软件产品的生产在整个软件过程是可见的。
+4． 量化管理级(Level4 - Quantitatively Managed)
+　　分析对软件过程和产品质量的详细度量数据，对软件过程和产品都有定量的理解与控制。管理有一个作出结论的客观依据，管理能够在定量的范围内预测性能。
+5． 优化级(Level5 - Optimizing)
+　　过程的量化反馈和先进的新思想、新技术促使过程持续不断改进。</p>
+
+<hr />
+
+<h3 id="用自己语言简述-swebok-或-cmmi-约200字">用自己语言简述 SWEBok 或 CMMI （约200字）</h3>
+
+<p>SWEBok(Software Engineering Body of Knowledge) 是一个详细说明了当今普遍接受的软件工程知识体系的国际标准(ISO/IEC TR 19759:2005)。
+IEEE为此专门发布了一个指南(SWEBOK Guide),它全面描述了软件工程实践所需的知识, 用于为如今普遍接受的软件工程知识体系提供指导。
+该指南一共定义了软件工程领域中的 <strong>10个</strong> 知识领域(注:2004版为10个,2016年发布V3版本则增加为15个)。
+其中,</p>
+<ul>
+  <li>软件需求(software requirements)</li>
+  <li>软件设计(software design)</li>
+  <li>软件构建(software construction)</li>
+  <li>软件工程过程(software engineering process)</li>
+  <li>软件工程工具与方法(software engineering models and methods)</li>
+</ul>
+
+<p>这几个知识领域我认为使我们这门课程较为关注的。</p>
+
+<hr />
+
+<h2 id="2-解释-psp-各项指标及技能要求">2. 解释 PSP 各项指标及技能要求</h2>
 
 <table>
   <thead>
     <tr>
-      <th>结构体成员</th>
-      <th>类型</th>
+      <th>PSP2.1</th>
       <th>解释</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>w</td>
-      <td>*gzip.Writer</td>
-      <td>用于写数据</td>
+      <td>Planning</td>
+      <td>计划</td>
     </tr>
     <tr>
-      <td>-</td>
-      <td>negroni.ResponseWriter</td>
-      <td>匿名成员, gzipResponseWriter结构体可直接访问该接口的方法</td>
+      <td>● Estimate</td>
+      <td>● 估计这个任务需要多少时间</td>
     </tr>
     <tr>
-      <td>wroteHeader</td>
-      <td>bool</td>
-      <td>记录是否已写了header, 避免重复写header</td>
+      <td>Development</td>
+      <td>开发</td>
+    </tr>
+    <tr>
+      <td>● Analysis</td>
+      <td>● 分析需求</td>
+    </tr>
+    <tr>
+      <td>● Design Spec</td>
+      <td>● 生成设计文档</td>
+    </tr>
+    <tr>
+      <td>● Design Review</td>
+      <td>● 设计复审(和同事审核设计文档)</td>
+    </tr>
+    <tr>
+      <td>● Coding Standard</td>
+      <td>● 代码规范(为目前的开发制定合适的规范)</td>
+    </tr>
+    <tr>
+      <td>● Design</td>
+      <td>● 具体设计</td>
+    </tr>
+    <tr>
+      <td>● Coding</td>
+      <td>● 具体编码</td>
+    </tr>
+    <tr>
+      <td>● Code Review</td>
+      <td>● 代码复审</td>
+    </tr>
+    <tr>
+      <td>● Test</td>
+      <td>● 测试(包括自测, 修改代码, 提交修改)</td>
+    </tr>
+    <tr>
+      <td>Record Time Spent</td>
+      <td>记录用时</td>
+    </tr>
+    <tr>
+      <td>Test Report</td>
+      <td>测试报告</td>
+    </tr>
+    <tr>
+      <td>Size Measurement</td>
+      <td>计算工作量</td>
+    </tr>
+    <tr>
+      <td>Postmortem</td>
+      <td>事后总结</td>
+    </tr>
+    <tr>
+      <td>Process Improvement Plan</td>
+      <td>提出过程改进计划</td>
     </tr>
   </tbody>
 </table>
-
-<h4 id="handler结构体">handler结构体</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type handler struct {
-	pool sync.Pool
-}
-</code></pre></div></div>
-<p>handler结构体中只有一个成员 pool (类型为sync包中定义的<a href="https://go-zh.org/pkg/sync/#Pool">Pool</a>结构体)</p>
-
-<p>pool 的作用是用于缓存那些已经分配了内存但是暂时还未使用的数据, 以供后续使用。(同时pool能够保证多个goroutines同时使用它时的安全性)</p>
-
-<p>其Put方法可以将一个任意类型的数据放入pool中;</p>
-
-<p>还有一个Get方法则可以从pool中随机选择一个item, 将其从pool中移除, 并返回给调用者。</p>
-
-<h4 id="常量">常量</h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const (
-	encodingGzip = "gzip"
-
-	headerAcceptEncoding  = "Accept-Encoding"
-	headerContentEncoding = "Content-Encoding"
-	headerContentLength   = "Content-Length"
-	headerContentType     = "Content-Type"
-	headerVary            = "Vary"
-	headerSecWebSocketKey = "Sec-WebSocket-Key"
-
-	BestCompression    = gzip.BestCompression
-	BestSpeed          = gzip.BestSpeed
-	DefaultCompression = gzip.DefaultCompression
-	NoCompression      = gzip.NoCompression
-)
-</code></pre></div></div>
-<p>注: 以上常量实际上是开发者直接从 <code class="highlighter-rouge">compress/gzip</code> 包中复制过来的。</p>
-
-<h3 id="gzip函数">Gzip函数</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Gzip returns a handler which will handle the Gzip compression in ServeHTTP.
-// Valid values for level are identical to those in the compress/gzip package.
-func Gzip(level int) *handler {
-	h := &amp;handler{}
-	h.pool.New = func() interface{} {
-		gz, err := gzip.NewWriterLevel(ioutil.Discard, level)
-		if err != nil {
-			panic(err)
-		}
-		return gz
-	}
-	return h
-}
-</code></pre></div></div>
-<p>Gzip函数初始化了一个空handler结构体
-并对其成员赋初值,
-然后返回该handler h, 传给negroni的Use方法。</p>
-
-<p>注: 由于handler结构体类型定义了其ServeHTTP方法(该方法下面会进行分析), 所以handler实现了negroni.Handler接口(negroni的Use方法所需的传入参数), 可以赋值给该接口。</p>
-
-<h3 id="handlerservehttp方法">handler.ServeHTTP方法</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// ServeHTTP wraps the http.ResponseWriter with a gzip.Writer.
-func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
-	// Skip compression if the client doesn't accept gzip encoding.
-	if !strings.Contains(r.Header.Get(headerAcceptEncoding), encodingGzip) {juhao
-		next(w, r)
-		return
-	}
-
-	// Skip compression if client attempt WebSocket connection
-	if len(r.Header.Get(headerSecWebSocketKey)) &gt; 0 {
-		next(w, r)
-		return
-	}
-
-	// Retrieve gzip writer from the pool. Reset it to use the ResponseWriter.
-	// This allows us to re-use an already allocated buffer rather than
-	// allocating a new buffer for every request.
-	// We defer g.pool.Put here so that the gz writer is returned to the
-	// pool if any thing after here fails for some reason (functions in
-	// next could potentially panic, etc)
-	gz := h.pool.Get().(*gzip.Writer)
-	defer h.pool.Put(gz)
-	gz.Reset(w)juhao
-
-	// Wrap the original http.ResponseWriter with negroni.ResponseWriter
-	// and create the gzipResponseWriter.
-	nrw := negroni.NewResponseWriter(w)
-	grw := gzipResponseWriter{gz, nrw, false}
-
-	// Call the next handler supplying the gzipResponseWriter instead of
-	// the original.
-	next(&amp;grw, r)
-
-	// Delete the content length after we know we have been written to.
-	grw.Header().Del(headerContentLength)
-
-	gz.Close()
-}
-</code></pre></div></div>
-
-<p>handler.ServeHTTP方法 的具体实现其实上述代码的注释中已经解释得很清晰了:</p>
-
-<ol>
-  <li>
-    <p>对于某些情况(客户端不支持gzip编码 或 客户端正尝试建立socket连接)跳过压缩步骤, 直接进入下一个中间件处理;</p>
-  </li>
-  <li>
-    <p>从pool中提取出 gzip writer, 并将其重置;</p>
-  </li>
-  <li>
-    <p>调用 negroni.NewResponseWriter 方法 得到一个封装了http.ResponseWriter 以及 其它一些方法 的 negroni.ResponseWriter接口;(具体可见<a href="https://github.com/urfave/negroni/blob/master/response_writer.go">negroni相应源码</a>)</p>
-  </li>
-  <li>
-    <p>将从第二第三步中得到的 gzip writer 和 negroni.ResponseWriter 作为初值 初始化创建一个 gzipResponseWriter结构体实例, 并将其传给下一个中间件;</p>
-  </li>
-  <li>
-    <p>收尾工作。将gzipResponseWriter Header中的 <code class="highlighter-rouge">headerContentLength</code> 字段删除 并 关闭 gzip writer</p>
-  </li>
-</ol>
-
-<h3 id="gzipresponsewriterwriteheader方法">gzipResponseWriter.WriteHeader方法</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Check whether underlying response is already pre-encoded and disable
-// gzipWriter before the body gets written, otherwise encoding headers
-func (grw *gzipResponseWriter) WriteHeader(code int) {
-	headers := grw.ResponseWriter.Header()
-	if headers.Get(headerContentEncoding) == "" {
-		headers.Set(hegoaderContentEncoding, encodingGzip)
-		headers.Add(headerVary, headerAcceptEncoding)
-	} else {
-		grw.w.Reset(ioutil.Discard)
-		grw.w = nil
-	}
-	grw.ResponseWriter.WriteHeader(code)
-	grw.wroteHeader = true
-}
-</code></pre></div></div>
-
-<p>如注释中所说, 该方法首先会检查 response 是否已经进行了编码,</p>
-
-<p>如果是, 则不会再进行gzip编码(将gzipWriter无效化并将gzipResponseWriter中类型为*gzip.Writer的成员w置空);</p>
-
-<p>否则, 则会将header中的Content-Encoding字段 设为 “gzip”, 表示使用gzip编码。</p>
-
-<p>最后, 无论是否使用gzip编码, 都会调用 http.ResponseWriter.WriteHeader 方法 进行基本的 Header 写操作(基于传入的返回码code)</p>
-
-<p>注意: 由于gzipResponseWriter结构体中有一个匿名成员negroni.ResponseWriter, 而该成员(接口)中又有匿名成员http.ResponseWriter(其有一个WriteHeader方法),
-所以代码中的 <code class="highlighter-rouge">grw.ResponseWriter.WriteHeader(code)</code>
-其实还可以简化为 <code class="highlighter-rouge">grw.WriteHeader(code)</code></p>
-
-<h3 id="gzipresponsewriterwrite方法">gzipResponseWriter.Write方法</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Write writes bytes to the gzip.Writer. It will also set the Content-Type
-// header using the net/http library content type detection if the Content-Type
-// header was not set yet.
-func (grw *gzipResponseWriter) Write(b []byte) (int, error) {
-	if !grw.wroteHeader {
-		grw.WriteHeader(http.StatusOK)
-	}
-	if grw.w == nil {
-		return grw.ResponseWriter.Write(b)
-	}
-	if len(grw.Header().Get(headerContentType)) == 0 {
-		grw.Header().Set(headerContentType, http.DetectContentType(b))
-	}
-	return grw.w.Write(b)
-}
-</code></pre></div></div>
-
-<p>同样, 如注释所说, 该方法 写数据到gzip.Writer。
-另外, 如果header的Content-Type字段还未设置, 则会通过调用 net/http包中的DetectContentType函数来自动确定Content-Type, 并将其设置到header的Content-Type字段中。</p>
-
-<hr />
-
-<p>至此, 对negroni-gzip 的源码分析就基本完成啦。</p>
 
 
                 <!-- <hr/> -->
@@ -466,19 +531,12 @@ func (grw *gzipResponseWriter) Write(b []byte) (int, error) {
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/11/16/go-http-src-analysis/" data-toggle="tooltip" data-placement="top" title="Golang http包源码分析">
-                        Previous<br>
-                        <span>Golang http包源码分析</span>
-                        </a>
-                    </li>
-                    
-                    
-                    <li class="next">
                         <a href="/2017/11/23/construct-VPN/" data-toggle="tooltip" data-placement="top" title="利用OpenVPN搭建简单VPN">
-                        Next<br>
+                        Previous<br>
                         <span>利用OpenVPN搭建简单VPN</span>
                         </a>
                     </li>
+                    
                     
                 </ul>
 
