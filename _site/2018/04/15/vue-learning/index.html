@@ -10,7 +10,7 @@
     <meta name="keywords"  content="Yezh Blog, James-Yip">
     <meta name="theme-color" content="">
     
-    <title>系统分析与设计 Homework2 - Yezh Blog</title>
+    <title>Vue 学习笔记 - Yezh Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2018/03/22/SAD-HW2/">
+    <link rel="canonical" href="http://localhost:4000/2018/04/15/vue-learning/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -154,13 +154,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/post-bg-blue.jpg" width="0" height="0"> -->
+<!-- <img src="/img/vue.png" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-blue.jpg')
+        background-image: url('/img/vue.png')
     }
 
     
@@ -180,15 +180,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#homework" title="homework">homework</a>
+                        <a class="tag" href="/tags/#JS" title="JS">JS</a>
+                        
+                        <a class="tag" href="/tags/#vue" title="vue">vue</a>
                         
                     </div>
-                    <h1>系统分析与设计 Homework2</h1>
+                    <h1>Vue 学习笔记</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Yezh on March 22, 2018</span>
+                    <span class="meta">Posted by Yezh on April 15, 2018</span>
                 </div>
             </div>
         </div>
@@ -206,161 +208,151 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="1简答题">1、简答题</h2>
+				<h2 id="介绍">介绍</h2>
 
-<ul>
-  <li>
-    <p>简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。</p>
+<p>Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的渐进式JavaScript框架。<br />
+Vue 只关注视图层， 采用自底向上增量开发的设计。<br />
+Vue 的目标是通过尽可能简单的 API 实现响应的<strong>数据绑定</strong>和组合的<strong>视图组件</strong>。</p>
 
-    <ul>
-      <li>
-        <p>瀑布模型</p>
+<hr />
 
-        <ul>
-          <li>
-            <p>优点</p>
+<h2 id="安装">安装</h2>
 
-            <p>（1）降低软件开发的复杂程度，提高软件开发过程的透明性，提高软件开发过程的可管理性；<br />
-（2）推迟软件实现，强调在软件实现前必须进行分析和设计工作；<br />
-（3）以项目的阶段评审和文档控制为手段有效地对整个开发过程进行指导，保证了阶段之间的正确衔接，能够及时发现并纠正开发过程中存在的缺陷，使产品达到预期的质量要求。</p>
-          </li>
-          <li>
-            <p>缺点</p>
+<p>兼容性: 支持所有兼容 ECMAScript 5 的浏览器, 不支持 IE8 及以下版本。</p>
 
-            <p>（1）强调过程活动的线性顺序；<br />
-（2）缺乏灵活性，特别是无法解决软件需求不明确或不准确的问题；<br />
-（3）风险控制能力较弱；<br />
-（4）瀑布模型中的软件活动是文档驱动的，当阶段之间规定过多的文档时，会极大地增加系统的工作量；<br />
-（5）管理人员如果仅仅以文档的完成情况来评估项目完成进度，往往会产生错误的结论。</p>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>增量模型</p>
+<p>当前最新稳定版本: 2.5.16</p>
 
-        <ul>
-          <li>
-            <p>优点</p>
+<p>每个版本的更新日志见 <a href="https://github.com/vuejs/vue/releases">vue_releases</a></p>
 
-            <p>（1）增强客户对系统的信心；<br />
-（2）降低系统失败风险；<br />
-（3）提高系统可靠性；<br />
-（4）提高系统的稳定性和可维护性。</p>
-          </li>
-          <li>
-            <p>缺点</p>
+<h3 id="直接用-script-引入">直接用 &lt;script&gt; 引入</h3>
 
-            <p>（1）增量粒度难以选择； <br />
-（2）确定所有的基本业务服务比较困难。</p>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <p>螺旋模型</p>
+<p>对于Vue.js的使用, 我们可以通过直接下载对应版本并用 &lt;script&gt; 标签引入，Vue 会被注册为一个全局变量。</p>
 
-        <ul>
-          <li>
-            <p>优点</p>
+<p>下面给出了两种不同的版本:  <br />
+<a href="https://vuejs.org/js/vue.js">开发版本</a>: 包含完整的警告和调试模式<br />
+<a href="https://vuejs.org/js/vue.min.js">生产版本</a>: 压缩版本, 删除了警告</p>
 
-            <p>（1）设计上的灵活性,可以在项目的各个阶段进行变更；</p>
+<p>另外, 我们还可以通过CDN, 直接在标签中输入对应URL来链接到指定版本的Vue.js。<br />
+如:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"&gt;&lt;/script&gt;
+</code></pre></div></div>
 
-            <p>（2）以小的分段来构建大型系统,使成本计算变得简单容易；</p>
+<h3 id="vue-devtools">Vue Devtools</h3>
+<p>vue-devtools 是一款由vue官方编写的用于调试vue应用的调试工具，该工具可以有效提高调试效率。</p>
 
-            <p>（3）客户始终参与每个阶段的开发,保证了项目不偏离正确方向以及项目的可控性；</p>
+<p>此处我是直接通过 chrome应用商店 下载安装的。</p>
 
-            <p>（4） 随着项目推进,客户始终掌握项目的最新信息 , 从而他或她能够和管理层有效地交互。</p>
-          </li>
-          <li>
-            <p>缺点</p>
+<p>手动安装流程可参考  <a href="https://github.com/vuejs/vue-devtools#vue-devtools">vue-devtools-github</a>
+或者 <a href="https://segmentfault.com/a/1190000009682735">Vue调试神器vue-devtools安装</a></p>
 
-            <p>（1）采用螺旋模型需要具有相当丰富的风险评估经验和专门知识，在风险较大的项目开发中，如果未能够及时标识风险，势必造成重大损失；</p>
+<h2 id="第一个vue应用-hello-vue">第一个Vue应用: Hello Vue!</h2>
 
-            <p>（2）过多的迭代次数会增加开发成本，延迟提交时间。</p>
-          </li>
-        </ul>
-      </li>
-    </ul>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- helloVue.html --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Hello Vue!<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>    
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+        
+    <span class="nt">&lt;/div&gt;</span>
+    
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"./helloVue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
 
-    <p><br /></p>
-  </li>
-  <li>
-    <p>简述 UP 的三大特点，其中哪些内容体现了用户驱动的开发，哪些内容体现风险驱动的开发？</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// helloVue.js</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="s1">'#app'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">message</span><span class="p">:</span> <span class="s2">"Hello Vue!"</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
 
-    <p>（1）用例驱动（use case driven）</p>
+<p>用浏览器打开该HTML文件后可以看到网页上输出了 “Hello Vue!” 文本。</p>
 
-    <p>​	  开发团队在软件开发的整个过程中（从需求分析到编码和测试）都使用到具体用例进行分析；</p>
+<h2 id="常用指令">常用指令</h2>
+<p>Vue指令以v-开头，作用在HTML元素上(可将其视作特殊的HTML标签属性), 给绑定的元素添加一些特殊行为, 从而扩展HTML功能。</p>
 
-    <p>（2）以架构为中心（architecture centric）</p>
+<h3 id="v-bind">v-bind</h3>
 
-    <p>​	  架构为软件开发的其他过程提供指导（即在构建好架构后，软件开发围绕其进行）；</p>
+<p>v-bind指令会将所绑定的元素节点的指定属性与Vue实例中的某个属性保持一致。(单向绑定)</p>
 
-    <p>（3）受控的迭代式增量开发（iterative and evolutionary）</p>
+<p>例子:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app-2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">v-bind:title=</span><span class="s">"message"</span><span class="nt">&gt;</span>
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  <span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
 
-    <p>​	  在开发过程中反复进行系统迭代与增量，从而有效管理需求变化，使程序系统逐步趋向稳定。</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">app2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">el</span><span class="p">:</span> <span class="s1">'#app-2'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s1">'页面加载于 '</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleString</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
 
-    <p>迭代与增量体现了用户驱动的开发，以架构为中心体现了风险驱动的开发。</p>
+<h3 id="v-model">v-model</h3>
 
-    <p><br /></p>
-  </li>
-  <li>
-    <p>UP 四个阶段的划分准则是什么？关键的里程碑是什么？</p>
+<p>v-model指令与v-bind指令类似, 不同的地方是v-model实现了双向数据绑定。</p>
 
-    <p>划分准则：<strong>时间</strong> &amp; <strong>UP的核心工作流程</strong></p>
+<h3 id="v-if">v-if</h3>
 
-    <table>
-      <thead>
-        <tr>
-          <th> </th>
-          <th style="text-align: center">初始阶段（Inception）</th>
-          <th style="text-align: center">精化阶段（Elaboration）</th>
-          <th style="text-align: center">构建阶段（Construction）</th>
-          <th style="text-align: center">交付阶段（Transition）</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>里程碑</td>
-          <td style="text-align: center">生命周期目标 (Lifecycle Objective) 里程碑，包括一些重要的文档，如：项目构想 (Vision)、原始用例模型、原始业务风险评估、一个或者多个原型、原始业务案例等。需要对这些文档进行评审，以确定正确理解用例需求、项目风险评估合理、阶段计划可行等。</td>
-          <td style="text-align: center">生命周期体系结构 (Lifecycle Architecture) 里程碑。包括风险分析文档、软件体系结构基线、项目计划、可执行的进化原型、初始版本的用户手册等。通过评审确定软件体系结构已经稳定、高风险的业务需求和技术机制已经解决、修订的项目计划可行等。</td>
-          <td style="text-align: center">初始运行能力 (Initial Operational Capability) 里程碑。包括可以运行的软件产品、用户手册等，它决定了产品是否可以在测试环境中进行部署。此刻，要确定软件、环境、用户是否可以开始系统的运行。</td>
-          <td style="text-align: center">产品发布 (Product Release) 里程碑。确定最终目标是否实现，是否应该开始产品下一个版本的另一个开发周期。在一些情况下这个里程碑可能与下一个周期的初始阶段的相重合。</td>
-        </tr>
-      </tbody>
-    </table>
+<p>条件判断指令，根据表达式值的真假来插入或删除元素，表达式返回一个布尔值，语法为： <code class="highlighter-rouge">v-if = "expression"</code></p>
 
-    <p><br /></p>
-  </li>
-  <li>
-    <p>IT 项目管理中，“工期、质量、范围/内容” 三个元素中，在合同固定条件下，为什么说“范围/内容”是项目团队是易于控制的？</p>
+<p>例子:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- html --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app-3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p</span> <span class="na">v-if=</span><span class="s">"seen"</span><span class="nt">&gt;</span>现在你看到我了<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
 
-    <p>在合同固定条件下，工期和质量在合同中已确定，不可轻易更改，而项目的范围或内容则可以根据软件开发过程中遇到的具体情况，在项目团队与甲方商议后，做出调整，从而得以控制。</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// JS</span>
+<span class="kd">var</span> <span class="nx">app3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">el</span><span class="p">:</span> <span class="s1">'#app-3'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">seen</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
 
-    <p><br /></p>
-  </li>
-  <li>
-    <p>为什么说，UP 为企业按固定节奏生产、固定周期发布软件产品提供了依据？</p>
+<h3 id="v-for">v-for</h3>
 
-    <p>UP将软件生命周期在时间上分解为四个顺序的阶段，并严格按照时间顺序进行软件开发，使得企业可以按固定节奏生产。</p>
+<p>循环指令，用于遍历数组、对象等，与JavaScript遍历类似，语法为：<code class="highlighter-rouge">v-for = "item in items"</code></p>
 
-    <p>另外，UP将每个阶段结束于一个主要的里程碑 (Major Milestone)，并在阶段结尾执行一次评估以确定这个阶段的目标是否已经满足。如果评估结果令人满意的话，可以允许项目进入下一个阶段， 从而保证了软件产品的质量，降低各种可能的风险，使得企业可以按固定周期发布软件产品。</p>
+<p>例子:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- html --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app-4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ol&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">v-for=</span><span class="s">"todo in todos"</span><span class="nt">&gt;</span>
+      
+    <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
 
-    <p><br /></p>
-  </li>
-</ul>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// JS</span>
+<span class="kd">var</span> <span class="nx">app4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">el</span><span class="p">:</span> <span class="s1">'#app-4'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">todos</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">text</span><span class="p">:</span> <span class="s1">'学习 JavaScript'</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">text</span><span class="p">:</span> <span class="s1">'学习 Vue'</span> <span class="p">},</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
 
-<h2 id="2项目管理使用">2、项目管理使用</h2>
+<h2 id="事件处理">事件处理</h2>
 
-<ul>
-  <li>使用截图工具（png格式输出），展现你团队的任务 Kanban，请注意以下要求
-    <ul>
-      <li>每个人的任务是明确的。即一周后可以看到具体成果</li>
-      <li>每个人的任务是1-2项。</li>
-      <li>至少包含一个团队活动任务</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="/img/in-post/2018-3-22-SAD-HW2/kanban.png" alt="kanban" /></p>
+<h2 id="模板">模板</h2>
 
 
                 <!-- <hr/> -->
@@ -371,19 +363,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/03/12/SAD-HW1/" data-toggle="tooltip" data-placement="top" title="系统分析与设计 Homework1">
+                        <a href="/2018/03/22/SAD-HW2/" data-toggle="tooltip" data-placement="top" title="系统分析与设计 Homework2">
                         Previous<br>
-                        <span>系统分析与设计 Homework1</span>
+                        <span>系统分析与设计 Homework2</span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2018/04/15/vue-learning/" data-toggle="tooltip" data-placement="top" title="Vue 学习笔记">
-                        Next<br>
-                        <span>Vue 学习笔记</span>
-                        </a>
-                    </li>
                     
                 </ul>
 
