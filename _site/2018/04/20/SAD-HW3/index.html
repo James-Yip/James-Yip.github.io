@@ -10,7 +10,7 @@
     <meta name="keywords"  content="Yezh Blog, James-Yip">
     <meta name="theme-color" content="">
     
-    <title>系统分析与设计 Homework1 - Yezh Blog</title>
+    <title>系统分析与设计 Homework3 - Yezh Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2018/03/12/SAD-HW1/">
+    <link rel="canonical" href="http://localhost:4000/2018/04/20/SAD-HW3/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -183,12 +183,12 @@
                         <a class="tag" href="/tags/#homework" title="homework">homework</a>
                         
                     </div>
-                    <h1>系统分析与设计 Homework1</h1>
+                    <h1>系统分析与设计 Homework3</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by Yezh on March 12, 2018</span>
+                    <span class="meta">Posted by Yezh on April 20, 2018</span>
                 </div>
             </div>
         </div>
@@ -206,324 +206,166 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="1-简单题">1. 简单题</h2>
+				<h2 id="1用例建模">1、用例建模</h2>
 
-<hr />
+<blockquote>
+  <p>a. 阅读 Asg_RH 文档，绘制用例图。</p>
+</blockquote>
 
-<h3 id="软件工程定义">软件工程定义</h3>
+<p><img src="/img/in-post/2018-4-20-SAD-HW3/Asg_RH_UML.png" alt="Asg_RH_UML" /></p>
 
+<p><br /></p>
+
+<p><strong>b. 选择你熟悉的定旅馆在线服务系统（或移动 APP），绘制用例图。并满足以下要求：</strong></p>
 <ul>
-  <li>
-    <p>IEEE: <br />
-  (1) 将系统化、规范化、可度量的方法应用与软件的开发、运行和维护的过程, 即将工程化应用于软件中。 <br />
-  (2) 对(1)中所述方法的研究。</p>
-  </li>
-  <li>
-    <p>软件工程是指导计算机软件开发和维护的工程学科。采用工程的概念、原理、技术和方法来开发与维护软件,把经过实践考验而证明正确的管理技术和当前能够得到的最的技术方法结合起来,这就是软件工程。</p>
-  </li>
+  <li><strong>对比 Asg_RH 用例图，请用色彩标注出创新用例或子用例</strong></li>
+  <li><strong>尽可能识别外部系统，并用色彩标注新的外部系统和服务</strong></li>
 </ul>
 
-<hr />
+<p><img src="/img/in-post/2018-4-20-SAD-HW3/去哪儿_UML.png" alt="去哪儿_UML" /></p>
 
-<h3 id="阅读经典名著人月神话等资料解释-software-crisiscocomo-模型">阅读经典名著“人月神话”等资料，解释 software crisis、COCOMO 模型。</h3>
+<p><br /></p>
 
-<h4 id="软件危机software-crisis">软件危机(software crisis)</h4>
+<p><strong>c. 对比两个时代、不同地区产品的用例图，总结在项目早期，发现创新的思路与方法。</strong></p>
 
-<h5 id="背景">背景</h5>
-<p>六十年代以来,随着计算机应用需求的驱动,系统软件和应用软件有很大的发展,如操作系统,编译系统和大型应用软件等。由于软件生产的复杂性和高成本,使大型软件的生产出现了很大的困难,即出现软件危机。</p>
+<p>对比以上两个用例图，可以发现, 最为直观的是”去哪儿”的用例会更多, 即其提供给用户的功能更为丰富。</p>
 
-<h5 id="表现形式">表现形式</h5>
-<ul>
-  <li>软件开发成本日益增长
-    <ul>
-      <li>开发成本超出预算</li>
-    </ul>
-  </li>
-  <li>软件开发进度难以控制
-    <ul>
-      <li>实际进度比预定计划一再拖延</li>
-    </ul>
-  </li>
-  <li>用户对 “已完成” 系统不满意的现象经常发生
-    <ul>
-      <li>用户需求不明确</li>
-    </ul>
-  </li>
-  <li>软件产品的质量不可靠
-    <ul>
-      <li>Bug &amp; Patch</li>
-    </ul>
-  </li>
-  <li>软件的可维护程度低
-    <ul>
-      <li>数量不断膨胀的软件产品缺乏适当的文档资料</li>
-    </ul>
-  </li>
-  <li>软件开发生产率跟不上硬件的发展和人们需求的增长</li>
-</ul>
+<p>发现创新的思路与方法(总结):</p>
+<ol>
+  <li>以用户为中心, 思考其需求, 抓住痛点;</li>
+  <li>借鉴已有的类似产品, 并在其基础上思考不足之处, 进行创新;</li>
+  <li>注重用户反馈, 采纳合理建议, 进行改进与创新。</li>
+</ol>
 
-<h5 id="原因">原因</h5>
-<ul>
-  <li>软件危机的根源
-    <ul>
-      <li>软件的大量需求与软件生产力效率之间的矛盾</li>
-      <li>软件系统的复杂性与软件开发方法之间的矛盾</li>
-    </ul>
-  </li>
-  <li>软件本身的特点
-    <ul>
-      <li>软件是一种抽象逻辑</li>
-      <li>软件是开发人员的智力劳动成果</li>
-      <li>软件具备强烈的个性化特征</li>
-      <li>软件规模日趋庞大,实现的业务逻辑与流程复杂</li>
-    </ul>
-  </li>
-  <li>软件开发的客观因素
-    <ul>
-      <li>系统需求分析不足</li>
-      <li>开发周期管理不善</li>
-      <li>开发过程缺乏规范</li>
-      <li>质量控制标准规程滞后</li>
-      <li>软件维护计划被忽视</li>
-    </ul>
-  </li>
-  <li>产业因素
-    <ul>
-      <li>软件企业的作坊式管理</li>
-      <li>软件企业规模的急剧膨胀</li>
-    </ul>
-  </li>
-</ul>
+<p><br /></p>
 
-<h5 id="危机的消除">危机的消除</h5>
-
-<ul>
-  <li>解决途径
-    <ul>
-      <li>正确认识计算机软件的内涵 (软件≠程序)</li>
-      <li>充分认识到软件开发不是某种个体劳动的神秘技巧,而是一种组织良好、管理严密、协同配合的工程活动</li>
-      <li>采用成熟的软件开发技术和方法</li>
-      <li>开发和使用适当的软件工具</li>
-    </ul>
-  </li>
-  <li>实施办法
-    <ul>
-      <li>组织管理
-        <ul>
-          <li>采用工程项目管理方法</li>
-        </ul>
-      </li>
-      <li>技术措施
-        <ul>
-          <li>采用软件开发技术、方法与软件工具</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="cocomo模型">COCOMO模型</h4>
-
-<p>COCOMO，英文全称为constructive cost model，中文为构造性成本模型。它是一种精确、易于使用的，基于模型的成本估算方法，最早由勃姆 （Boehm） 于 1981 年提出。从本质上说是一种参数化的项目估算方法，参数建模是把项目的某些特征作为参数，通过建立一个数字模型预测项目成本（类似于居住面积作为参数计算的整体的住房成本）。</p>
-
-<p>在该模型中使用的基本量有以下几个：<br />
-（1）DSI（源指令条数），定义为代码行数，包括除注释行以外的全部代码。若一行有两个语句，则算做一条指令。 <br />
-（2）MM（度量单位为人月）表示开发工作量。 <br />
-（3）TDEV（度量单位为月）表示开发进度，由工作量决定。  <br />
-（4）COCOMO 模型重点考虑 15 种影响软件工作量的因素，并通过定义乘法因子，从而准确、合理地估算软件的工作量。</p>
-
-<hr />
-
-<h3 id="软件生命周期">软件生命周期。</h3>
-
-<ul>
-  <li>软件生命周期的概念
-    <ul>
-      <li>计算机软件有一个孕育、诞生、成长、成熟、衰亡的生存过程,即软件的生命周期 (也称软件开发生命周期 <strong>SDLC</strong> 或软件开发过程)。软件生命周期被划分为若干阶段,每个阶段有明确的任务,从而使规模、结构和管理复杂的软件开发过程得到适当的控制和管理。</li>
-      <li>软件生命周期包括可行性分析与开发计划、需求分析、设计 (概要设计和详细设计)、编码实现、测试、运行与维护等活动,将这些活动以适当的方式分配到不同的阶段去完成。</li>
-    </ul>
-  </li>
-  <li>软件生命周期的6个阶段
-    <ul>
-      <li>可行性分析与计划阶段
-        <ul>
-          <li>确定软件开发的总体目标,给出功能、性能、可靠性以及接口
-  等方面的要求,进行完成可行性分析。</li>
-          <li>估计可利用的资源 (硬件、软件、人力等)、成本、效益、开发
-  进度,进行投资-收益分析,制订开发计划。</li>
-          <li>提交可行性分析报告、开发计划等文档。</li>
-        </ul>
-      </li>
-      <li>需求分析阶段
-        <ul>
-          <li>分析用户提出的要求,给出需求详细定义,确定软件系统的各
-  项功能、性能需求和设计约束,确定对文档编制的要求。</li>
-          <li>提交软件需求说明、软件规格说明、数据要求说明等文档和初
-  步的用户手册。</li>
-        </ul>
-      </li>
-      <li>设计阶段
-        <ul>
-          <li>概要设计: 把各项需求转换成软件的体系结构。结构中每一组
-  成部分都是意义明确的模块,每个模块都和某些需求相对应。</li>
-          <li>详细设计: 对每个模块所要完成的工作进行具体的描述,提供
-  源程序编写的直接依据。</li>
-          <li>提交结构设计说明、详细设计说明和测试计划初稿等文档。</li>
-        </ul>
-      </li>
-      <li>实现阶段
-        <ul>
-          <li>完成源程序的编码、编译 (或汇编) 和排错调试,得到没有语法
-  错误的程序清单。程序结构良好、清晰易读,且与设计相一致</li>
-          <li>编写进度日报、周报和月报 (取决于项目的重要性和规模)。</li>
-          <li>提交用户手册、操作手册等面向用户的文档的编写工作。</li>
-          <li>编制测试计划。</li>
-        </ul>
-      </li>
-      <li>测试阶段
-        <ul>
-          <li>全面测试目标软件系统,并检查审阅已编制的文档,提交测试
-  分析报告。逐项评价所生产的程序、文档以及开发工作本身,
-  提交项目开发总结报告。</li>
-          <li>在整个开发过程中 (即前五个阶段中),开发集体需要按月编写
-  开发进度月报。</li>
-        </ul>
-      </li>
-      <li>运行与维护阶段
-        <ul>
-          <li>软件提交给用户后,在运行使用中得到持续维护,根据用户新
-  提出的需求进行必要而且可能的扩充、删改、更新和升级。</li>
-          <li>软件维护包括改正性维护 (发现错误)、适应性维护 (适应运行环
-  境变化) 和完善性维护 (增强功能)。</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="按照-swebok-的-ka-划分本课程关注哪些-ka-或-知识领域">按照 SWEBok 的 KA 划分，本课程关注哪些 KA 或 知识领域？</h3>
-
-<ul>
-  <li>软件需求(software requirements)</li>
-  <li>软件设计(software design)</li>
-  <li>软件构建(software construction)</li>
-  <li>软件工程过程(software engineering process)</li>
-  <li>软件工程工具与方法(software engineering models and methods)</li>
-</ul>
-
-<hr />
-
-<h3 id="解释-cmmi-的五个级别例如level-1---initial无序自发生产模式">解释 CMMI 的五个级别。例如：Level 1 - Initial：无序，自发生产模式。</h3>
-
-<p>1． 初始级(Level1 - Initial)  <br />
-　　软件过程无序，有时甚至混乱，对过程几乎没有定义，成功取决于个人努力。管理是反应式的。 <br />
-2．可管理级(Level2 - Managed)  <br />
-　　建立了基本的项目管理过程来跟踪费用、进度和功能特性。制定了必要的过程纪律，能重复早先类似应用项目取得的成功经验。  <br />
-3． 已定义级(Level3 - Defined)  <br />
-　　已将软件管理和工程两方面的过程文档化、标准化，并综合成该组织的标准软件过程。所有项目均使用经批准、剪裁的标准软件过程来开发和维护软件，软件产品的生产在整个软件过程是可见的。  <br />
-4． 量化管理级(Level4 - Quantitatively Managed) <br />
-　　分析对软件过程和产品质量的详细度量数据，对软件过程和产品都有定量的理解与控制。管理有一个作出结论的客观依据，管理能够在定量的范围内预测性能。 <br />
-5． 优化级(Level5 - Optimizing) <br />
-　　过程的量化反馈和先进的新思想、新技术促使过程持续不断改进。</p>
-
-<hr />
-
-<h3 id="用自己语言简述-swebok-或-cmmi-约200字">用自己语言简述 SWEBok 或 CMMI （约200字）</h3>
-
-<p>SWEBok(Software Engineering Body of Knowledge) 是一个详细说明了当今普遍接受的软件工程知识体系的国际标准(ISO/IEC TR 19759:2005)。
-IEEE为此专门发布了一个指南(SWEBOK Guide),它全面描述了软件工程实践所需的知识, 用于为如今普遍接受的软件工程知识体系提供指导。
-该指南一共定义了软件工程领域中的 <strong>10个</strong> 知识领域(注:2004版为10个,2016年发布V3版本则增加为15个)。
-其中,</p>
-<ul>
-  <li>软件需求(software requirements)</li>
-  <li>软件设计(software design)</li>
-  <li>软件构建(software construction)</li>
-  <li>软件工程过程(software engineering process)</li>
-  <li>软件工程工具与方法(software engineering models and methods)</li>
-</ul>
-
-<p>这几个知识领域我认为使我们这门课程较为关注的。</p>
-
-<hr />
-
-<h2 id="2-解释-psp-各项指标及技能要求">2. 解释 PSP 各项指标及技能要求</h2>
+<p><strong>d. 请使用 SCRUM 方法，在（任务b）用例图基础上，编制某定旅馆开发的需求（backlog）。</strong></p>
 
 <table>
   <thead>
     <tr>
-      <th>PSP2.1</th>
-      <th>解释</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Imp</th>
+      <th>Est</th>
+      <th>How to demo</th>
+      <th>Notes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Planning</td>
-      <td>计划</td>
+      <td>1</td>
+      <td>Search Hotel</td>
+      <td>20</td>
+      <td>10</td>
+      <td>用户输入地点和入住/离店日期，搜索合适的酒店, (或通过地图搜索)</td>
+      <td>注意输入的合法性检测</td>
     </tr>
     <tr>
-      <td>● Estimate</td>
-      <td>● 估计这个任务需要多少时间</td>
+      <td>2</td>
+      <td>Reserve Hotel</td>
+      <td>30</td>
+      <td>30</td>
+      <td>用户在列表中选择相应酒店, 并进行房间选择, 预约信息确认和付款等操作</td>
+      <td>注意付款操作的原子性, 避免交易意外中断引起的不良后果</td>
     </tr>
     <tr>
-      <td>Development</td>
-      <td>开发</td>
+      <td>3</td>
+      <td>Comment Hotel</td>
+      <td>10</td>
+      <td>7</td>
+      <td>用户可查看其他用户对酒店的评价内容或对住过的酒店进行评价</td>
+      <td>UI要简洁美观</td>
     </tr>
     <tr>
-      <td>● Analysis</td>
-      <td>● 分析需求</td>
-    </tr>
-    <tr>
-      <td>● Design Spec</td>
-      <td>● 生成设计文档</td>
-    </tr>
-    <tr>
-      <td>● Design Review</td>
-      <td>● 设计复审(和同事审核设计文档)</td>
-    </tr>
-    <tr>
-      <td>● Coding Standard</td>
-      <td>● 代码规范(为目前的开发制定合适的规范)</td>
-    </tr>
-    <tr>
-      <td>● Design</td>
-      <td>● 具体设计</td>
-    </tr>
-    <tr>
-      <td>● Coding</td>
-      <td>● 具体编码</td>
-    </tr>
-    <tr>
-      <td>● Code Review</td>
-      <td>● 代码复审</td>
-    </tr>
-    <tr>
-      <td>● Test</td>
-      <td>● 测试(包括自测, 修改代码, 提交修改)</td>
-    </tr>
-    <tr>
-      <td>Record Time Spent</td>
-      <td>记录用时</td>
-    </tr>
-    <tr>
-      <td>Test Report</td>
-      <td>测试报告</td>
-    </tr>
-    <tr>
-      <td>Size Measurement</td>
-      <td>计算工作量</td>
-    </tr>
-    <tr>
-      <td>Postmortem</td>
-      <td>事后总结</td>
-    </tr>
-    <tr>
-      <td>Process Improvement Plan</td>
-      <td>提出过程改进计划</td>
+      <td>4</td>
+      <td>Manage Order</td>
+      <td>20</td>
+      <td>20</td>
+      <td>用户进行订单的信息确认, 移除等</td>
+      <td>需要验进行用户身份验证</td>
     </tr>
   </tbody>
 </table>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="2业务建模">2、业务建模</h2>
+
+<p><strong>a. 在（任务b）基础上，用活动图建模找酒店用例。简述利用流程图发现子用例的方法。</strong></p>
+
+<p>上述任务b对应的活动图如下所示:</p>
+
+<p><img src="/img/in-post/2018-4-20-SAD-HW3/去哪儿_activity.png" alt="去哪儿_activity" /></p>
+
+<p>利用流程图发现子用例的方法:</p>
+<ol>
+  <li>对于流程图中某些连续且可抽象的步骤,可将其共同作为一个子用例;</li>
+  <li>对于其他不可进一步抽象的步骤, 将其作为独立的子用例;</li>
+  <li>对于流程图中的循环结构, 有时可将其作为一个子用例。</li>
+</ol>
+
+<p><br /></p>
+
+<p><strong>b. 选择你身边的银行 ATM，用活动图描绘取款业务流程</strong></p>
+
+<p>活动图如下所示:</p>
+
+<p><img src="/img/in-post/2018-4-20-SAD-HW3/bank_activity.png" alt="bank_activity" /></p>
+
+<p><br /></p>
+
+<p><strong>c. 查找淘宝退货业务官方文档，使用多泳道图，表达客户、淘宝网、淘宝商家服务系统、商家等用户和系统协同完成退货业务的过程。分析客户要完成退货业务，在淘宝网上需要实现哪些系统用例</strong></p>
+
+<p>泳道图如下所示:</p>
+
+<p><img src="/img/in-post/2018-4-20-SAD-HW3/taobao_yongdao.png" alt="taobao_yongdao" /></p>
+
+<p>为了完成退货业务，在淘宝网上需要实现的系统用例有：退货系统用例 和 退款系统用例。</p>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
+<h2 id="3用例文本编写">3、用例文本编写</h2>
+
+<blockquote>
+  <p>在大作业基础上，分析三种用例文本的优点和缺点</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>优点</th>
+      <th>缺点</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Brief</td>
+      <td>简洁, 耗时短, 有助于快速了解主题和范围</td>
+      <td>表达能力较差, 无法全面描述功能需求</td>
+    </tr>
+    <tr>
+      <td>Casual</td>
+      <td>相对简洁, 且可描述部分功能需求</td>
+      <td>不仍然不够具体, 缺乏细化</td>
+    </tr>
+    <tr>
+      <td>Fully</td>
+      <td>表达能力强, 能全面描述需求</td>
+      <td>耗时长且繁琐</td>
+    </tr>
+  </tbody>
+</table>
+
 
 
                 <!-- <hr/> -->
@@ -534,19 +376,12 @@ IEEE为此专门发布了一个指南(SWEBOK Guide),它全面描述了软件工�
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2017/11/23/construct-VPN/" data-toggle="tooltip" data-placement="top" title="利用OpenVPN搭建简单VPN">
+                        <a href="/2018/04/15/vue-learning/" data-toggle="tooltip" data-placement="top" title="Vue 学习笔记">
                         Previous<br>
-                        <span>利用OpenVPN搭建简单VPN</span>
+                        <span>Vue 学习笔记</span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2018/03/22/SAD-HW2/" data-toggle="tooltip" data-placement="top" title="系统分析与设计 Homework2">
-                        Next<br>
-                        <span>系统分析与设计 Homework2</span>
-                        </a>
-                    </li>
                     
                 </ul>
 
