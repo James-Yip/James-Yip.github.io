@@ -5,9 +5,43 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 07 May 2018 06:31:12 +0000</pubDate>
-    <lastBuildDate>Mon, 07 May 2018 06:31:12 +0000</lastBuildDate>
+    <pubDate>Sun, 13 May 2018 15:50:43 +0000</pubDate>
+    <lastBuildDate>Sun, 13 May 2018 15:50:43 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>系统分析与设计 Homework7</title>
+        <description>&lt;h2 id=&quot;奇妙清单app建模练习&quot;&gt;奇妙清单APP建模练习&lt;/h2&gt;
+
+&lt;h3 id=&quot;用例图&quot;&gt;用例图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_use_case.png&quot; alt=&quot;todolist_use_case&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;待办事项业务的活动图&quot;&gt;待办事项业务的活动图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_activity.png&quot; alt=&quot;todolist_activity&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;领域模型&quot;&gt;领域模型&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_class_model.png&quot; alt=&quot;todolist_class_model&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;清单对象的状态图&quot;&gt;清单对象的状态图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_state_model.png&quot; alt=&quot;todolist_state_model&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;创建任务场景的系统顺序图与操作协议&quot;&gt;创建任务场景的系统顺序图与操作协议&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_SSD.png&quot; alt=&quot;todolist_SSD&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 13 May 2018 09:00:00 +0000</pubDate>
+        <link>http://localhost:4000/2018/05/13/SAD-HW7/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/05/13/SAD-HW7/</guid>
+        
+        <category>homework</category>
+        
+        
+      </item>
     
       <item>
         <title>系统分析与设计 Homework6</title>
@@ -2356,57 +2390,6 @@ h.ServeHTTP(w, r)
         <category>go</category>
         
         <category>http</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Yezh Blog</title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;“This is the beginning.”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
-
-&lt;p&gt;Yezh 的 blog 开通啦!&lt;/p&gt;
-
-&lt;p&gt;现在开始, 我将不定期更新我的博客。&lt;/p&gt;
-
-&lt;p&gt;内容主要为技术帖。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
-
-&lt;p&gt;一开始打算直接弄一个 CSDN 博客, 但是在注册时用户名老是重复, 不重复的又不好记, 于是就暂时搁置了。&lt;/p&gt;
-
-&lt;p&gt;后来发现 &lt;code class=&quot;highlighter-rouge&quot;&gt;Github Pages&lt;/code&gt; 可以免费托管静态内容, 了解后发现并不难, 于是就开始正式搭建我的博客啦。&lt;/p&gt;
-
-&lt;p&gt;我采用的技术方案为: &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; + &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;其优点有：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;可直接采用 &lt;strong&gt;Markdown&lt;/strong&gt; 书写&lt;/li&gt;
-  &lt;li&gt;采用 Git workflow ，&lt;strong&gt;Git Commit 即 Blog Post&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;免费无限空间 (不用自己折腾主机)&lt;/li&gt;
-  &lt;li&gt;可自定义域名 (只需简单改改 DNS, 加个 CNAME 就好了)&lt;/li&gt;
-  &lt;li&gt;Jekyll 自定制实现容易&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;博客搭建的过程主要参照了 &lt;a href=&quot;http://qiubaiying.top/2017/02/06/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&quot;&gt;利用 GitHub Pages 快速搭建博客&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;致谢&quot;&gt;致谢&lt;/h2&gt;
-
-&lt;p&gt;最后, 感谢 &lt;a href=&quot;https://github.com/huxpro&quot;&gt;Huxpro&lt;/a&gt; 提供的博客模板 和 &lt;a href=&quot;https://github.com/qiubaiying&quot;&gt;qiubaiying&lt;/a&gt; 的博客搭建教程。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 15 Nov 2017 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2017/11/15/hello-blog/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/11/15/hello-blog/</guid>
-        
-        <category>blog</category>
         
         
       </item>
