@@ -5,20 +5,56 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 01 Jul 2018 14:30:01 +0000</pubDate>
-    <lastBuildDate>Sun, 01 Jul 2018 14:30:01 +0000</lastBuildDate>
+    <pubDate>Mon, 02 Jul 2018 07:17:45 +0000</pubDate>
+    <lastBuildDate>Mon, 02 Jul 2018 07:17:45 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
         <title>系统分析与设计 Homework9</title>
-        <description>&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;使用 ECB 实现 make reservation 用例的详细设计（包含用例简介，顺序图，类图）&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;将逻辑设计类图映射到实际项目框架的包图。用树形结构表述实现的包和类&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+        <description>&lt;h2 id=&quot;part1&quot;&gt;Part1&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;使用 ECB 实现 make reservation 用例的详细设计（包含用例简介，顺序图，类图）&lt;/p&gt;
+
+&lt;h3 id=&quot;用例简介&quot;&gt;用例简介&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-6-30-SAD-HW9/Asg_RH_UML.png&quot; alt=&quot;Asg_RH_UML&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如用例图所示: &lt;br /&gt;
+对于make reservation用例 (即图中的 Reserve Hotel), Customer 搜索并选择要预定的酒店，然后选择房间, 入住时间等，再输入姓名、邮箱等信息确认订单。&lt;/p&gt;
+
+&lt;p&gt;类识别如下:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Boundary&lt;/th&gt;
+      &lt;th&gt;Controller&lt;/th&gt;
+      &lt;th&gt;Entity&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SearchHotelPage&lt;br /&gt; HotelListPage&lt;br /&gt; MakeReservationPage&lt;br /&gt;&lt;/td&gt;
+      &lt;td&gt;MakeReservationController&lt;/td&gt;
+      &lt;td&gt;Reservation &lt;br /&gt; Hotel &lt;br /&gt; Room &lt;br /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;顺序图&quot;&gt;顺序图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-6-30-SAD-HW9/Asg_RH_SSD.png&quot; alt=&quot;Asg_RH_SSD&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;类图&quot;&gt;类图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-6-30-SAD-HW9/Asg_RH_class.png&quot; alt=&quot;Asg_RH_class&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;part2&quot;&gt;Part2&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;p&gt;将逻辑设计类图映射到实际项目框架的包图。用树形结构表述实现的包和类。&lt;/p&gt;
+
+&lt;p&gt;相应树形结构及映射, 如下所示:
+&lt;img src=&quot;/img/in-post/2018-6-30-SAD-HW9/Asg_RH_tree.png&quot; alt=&quot;Asg_RH_tree&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 30 Jun 2018 09:00:00 +0000</pubDate>
         <link>http://localhost:4000/2018/06/30/SAD-HW9/</link>

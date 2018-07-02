@@ -206,14 +206,50 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<ul>
-  <li>
-    <p>使用 ECB 实现 make reservation 用例的详细设计（包含用例简介，顺序图，类图）</p>
-  </li>
-  <li>
-    <p>将逻辑设计类图映射到实际项目框架的包图。用树形结构表述实现的包和类</p>
-  </li>
-</ul>
+				<h2 id="part1">Part1</h2>
+<hr />
+
+<p>使用 ECB 实现 make reservation 用例的详细设计（包含用例简介，顺序图，类图）</p>
+
+<h3 id="用例简介">用例简介</h3>
+<p><img src="/img/in-post/2018-6-30-SAD-HW9/Asg_RH_UML.png" alt="Asg_RH_UML" /></p>
+
+<p>如用例图所示: <br />
+对于make reservation用例 (即图中的 Reserve Hotel), Customer 搜索并选择要预定的酒店，然后选择房间, 入住时间等，再输入姓名、邮箱等信息确认订单。</p>
+
+<p>类识别如下:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Boundary</th>
+      <th>Controller</th>
+      <th>Entity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SearchHotelPage<br /> HotelListPage<br /> MakeReservationPage<br /></td>
+      <td>MakeReservationController</td>
+      <td>Reservation <br /> Hotel <br /> Room <br /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="顺序图">顺序图</h3>
+
+<p><img src="/img/in-post/2018-6-30-SAD-HW9/Asg_RH_SSD.png" alt="Asg_RH_SSD" /></p>
+
+<h3 id="类图">类图</h3>
+
+<p><img src="/img/in-post/2018-6-30-SAD-HW9/Asg_RH_class.png" alt="Asg_RH_class" /></p>
+
+<h2 id="part2">Part2</h2>
+<hr />
+<p>将逻辑设计类图映射到实际项目框架的包图。用树形结构表述实现的包和类。</p>
+
+<p>相应树形结构及映射, 如下所示:
+<img src="/img/in-post/2018-6-30-SAD-HW9/Asg_RH_tree.png" alt="Asg_RH_tree" /></p>
 
 
                 <!-- <hr/> -->
