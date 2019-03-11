@@ -5,1244 +5,9 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Jul 2018 07:17:45 +0000</pubDate>
-    <lastBuildDate>Mon, 02 Jul 2018 07:17:45 +0000</lastBuildDate>
+    <pubDate>Mon, 11 Mar 2019 07:41:36 +0000</pubDate>
+    <lastBuildDate>Mon, 11 Mar 2019 07:41:36 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
-    
-      <item>
-        <title>系统分析与设计 Homework9</title>
-        <description>&lt;h2 id=&quot;part1&quot;&gt;Part1&lt;/h2&gt;
-&lt;hr /&gt;
-
-&lt;p&gt;使用 ECB 实现 make reservation 用例的详细设计（包含用例简介，顺序图，类图）&lt;/p&gt;
-
-&lt;h3 id=&quot;用例简介&quot;&gt;用例简介&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-6-30-SAD-HW9/Asg_RH_UML.png&quot; alt=&quot;Asg_RH_UML&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如用例图所示: &lt;br /&gt;
-对于make reservation用例 (即图中的 Reserve Hotel), Customer 搜索并选择要预定的酒店，然后选择房间, 入住时间等，再输入姓名、邮箱等信息确认订单。&lt;/p&gt;
-
-&lt;p&gt;类识别如下:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Boundary&lt;/th&gt;
-      &lt;th&gt;Controller&lt;/th&gt;
-      &lt;th&gt;Entity&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SearchHotelPage&lt;br /&gt; HotelListPage&lt;br /&gt; MakeReservationPage&lt;br /&gt;&lt;/td&gt;
-      &lt;td&gt;MakeReservationController&lt;/td&gt;
-      &lt;td&gt;Reservation &lt;br /&gt; Hotel &lt;br /&gt; Room &lt;br /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;顺序图&quot;&gt;顺序图&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-6-30-SAD-HW9/Asg_RH_SSD.png&quot; alt=&quot;Asg_RH_SSD&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;类图&quot;&gt;类图&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-6-30-SAD-HW9/Asg_RH_class.png&quot; alt=&quot;Asg_RH_class&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;part2&quot;&gt;Part2&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;将逻辑设计类图映射到实际项目框架的包图。用树形结构表述实现的包和类。&lt;/p&gt;
-
-&lt;p&gt;相应树形结构及映射, 如下所示:
-&lt;img src=&quot;/img/in-post/2018-6-30-SAD-HW9/Asg_RH_tree.png&quot; alt=&quot;Asg_RH_tree&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 30 Jun 2018 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/06/30/SAD-HW9/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/06/30/SAD-HW9/</guid>
-        
-        <category>homework</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>系统分析与设计 Homework8</title>
-        <description>&lt;h2 id=&quot;描述软件架构与框架之间的区别与联系&quot;&gt;描述软件架构与框架之间的区别与联系&lt;/h2&gt;
-&lt;hr /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;软件架构&lt;/strong&gt;&lt;br /&gt;
-软件架构是关乎软件如何设计的重要策略, 是软件开发过程中的抽象解决方案。它将一个软件系统划分为一系列模块, 并描述各个模块的功能职责以及模块间的交互协作行为(即接口的设计)。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;框架&lt;/strong&gt;&lt;br /&gt;
-框架是与特定语言和技术相关的架构应用解决方案。它为构建最终完整的解决方案提供良好基础, 可以看作软件系统或子系统的半成品, 开发人员在此基础上进行开发, 可明显提高开发效率。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;区别&lt;/strong&gt;&lt;br /&gt;
-软件架构是与特定语言或技术无关的架构设计解决方案, 为软件开发提供指导。&lt;br /&gt;
-框架是与特定语言和技术相关的架构应用解决方案, 为软件开发提供便利。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;联系&lt;/strong&gt;&lt;/p&gt;
-    &lt;ul&gt;
-      &lt;li&gt;二者的出现都是为了解决软件系统日益复杂所带来的困难而采取“分而治之”思维的结果: 软件架构是先大局后局部；框架是先通用后专用。&lt;/li&gt;
-      &lt;li&gt;软件架构的决策与设计往往会体现在框架之中。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;以你的项目为案例&quot;&gt;以你的项目为案例&lt;/h2&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;绘制三层架构模型图细致到分区&quot;&gt;绘制三层架构模型图，细致到分区&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-6-3-SAD-HW8/orderease_package_diagram.png&quot; alt=&quot;orderease_package_diagram&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;结合你程序的结构从程序员角度说明三层架构给开发者带来的便利&quot;&gt;结合你程序的结构，从程序员角度说明三层架构给开发者带来的便利&lt;/h3&gt;
-&lt;p&gt;优点 / 便利:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;项目结构清晰, 有利于明确分工&lt;/li&gt;
-  &lt;li&gt;耦合度低, 可维护性高&lt;/li&gt;
-  &lt;li&gt;便于重用&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;以我们项目为例, 我们通过三层架构实现前后端分离, 同步开发, 前端关注表示层和业务层, 后端关注业务层和持久化层。&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;研究-vue-与-flux-状态管理的异同&quot;&gt;研究 VUE 与 Flux 状态管理的异同&lt;/h2&gt;
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;flux-状态管理&quot;&gt;Flux 状态管理&lt;/h3&gt;
-
-&lt;p&gt;Flux将应用分为四部分:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;View&lt;/li&gt;
-  &lt;li&gt;Action&lt;/li&gt;
-  &lt;li&gt;Dispatcher&lt;/li&gt;
-  &lt;li&gt;Store&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;具体状态管理机制如下图所示:
-&lt;img src=&quot;/img/in-post/2018-6-3-SAD-HW8/flux.png&quot; alt=&quot;flux&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;用户访问 View&lt;/li&gt;
-  &lt;li&gt;View 发出用户的 Action&lt;/li&gt;
-  &lt;li&gt;Dispatcher 收到 Action，要求 Store 进行相应的更新&lt;/li&gt;
-  &lt;li&gt;Store 更新后，触发一个”change”事件&lt;/li&gt;
-  &lt;li&gt;View 收到”change”事件后，更新页面&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;vue-状态管理&quot;&gt;VUE 状态管理&lt;/h3&gt;
-&lt;p&gt;VUE官方推出了一个专为 Vue.js 应用程序开发的状态管理模式 &lt;code class=&quot;highlighter-rouge&quot;&gt;Vuex&lt;/code&gt;。&lt;br /&gt;
-Vuex 采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。&lt;/p&gt;
-
-&lt;p&gt;Vuex 包含以下几个部分:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;state，驱动应用的数据源；&lt;/li&gt;
-  &lt;li&gt;view，以声明方式将 state 映射到视图；&lt;/li&gt;
-  &lt;li&gt;actions，响应在 view 上的用户输入导致的状态变化。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-6-3-SAD-HW8/vuex.png&quot; alt=&quot;vuex&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;异同&quot;&gt;异同&lt;/h3&gt;
-
-&lt;p&gt;异:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;应用包含部分不同&lt;/li&gt;
-  &lt;li&gt;数据流流向不同&lt;br /&gt;
-Flux的流向:&lt;br /&gt;
-View -&amp;gt; Action -&amp;gt; Dispatcher -&amp;gt; Store -&amp;gt; Dispatcher -&amp;gt; View (同步异步相同)&lt;br /&gt;
-Vuex的流向:&lt;br /&gt;
-View -&amp;gt;(Commit) Mutations -&amp;gt;(Mutate) State -&amp;gt;(Render) View (同步操作)&lt;br /&gt;
-View -&amp;gt;(Dispatch) Actions -&amp;gt;(Commit) Mutations -&amp;gt;(Mutate) State -&amp;gt;(Render) View (异步操作)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;同:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;都使用单向数据流进行状态管理&lt;/li&gt;
-  &lt;li&gt;对于状态管理的设计思想基本一致&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 03 Jun 2018 04:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/06/03/SAD-HW8/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/06/03/SAD-HW8/</guid>
-        
-        <category>homework</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>系统分析与设计 Homework7</title>
-        <description>&lt;h2 id=&quot;奇妙清单app建模练习&quot;&gt;奇妙清单APP建模练习&lt;/h2&gt;
-
-&lt;h3 id=&quot;用例图&quot;&gt;用例图&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_use_case.png&quot; alt=&quot;todolist_use_case&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;待办事项业务的活动图&quot;&gt;待办事项业务的活动图&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_activity.png&quot; alt=&quot;todolist_activity&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;领域模型&quot;&gt;领域模型&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_class_model.png&quot; alt=&quot;todolist_class_model&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;清单对象的状态图&quot;&gt;清单对象的状态图&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_state_model.png&quot; alt=&quot;todolist_state_model&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;创建任务场景的系统顺序图与操作协议&quot;&gt;创建任务场景的系统顺序图与操作协议&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-5-13-SAD-HW7/todolist_SSD.png&quot; alt=&quot;todolist_SSD&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 13 May 2018 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/05/13/SAD-HW7/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/05/13/SAD-HW7/</guid>
-        
-        <category>homework</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>系统分析与设计 Homework6</title>
-        <description>&lt;h3 id=&quot;1参考-asg_rh-文档-对-reservationorder-对象建模&quot;&gt;1）参考 Asg_RH 文档， 对 Reservation/Order 对象建模&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;建模要求： 参考练习不能提供足够信息帮助你对订单对象建模，请参考现在 定旅馆 的旅游网站，尽可能分析围绕订单发生的各种情况，直到订单通过销售事件（柜台销售）结束订单。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;订单状态图如下所示: &lt;br /&gt;
-&lt;img src=&quot;/img/in-post/2018-5-6-SAD-HW6/Asg_RH_state_model.png&quot; alt=&quot;Asg_RH_state_model&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;2研究淘宝退货流程活动图对退货业务对象状态建模&quot;&gt;2）研究淘宝退货流程活动图，对退货业务对象状态建模&lt;/h3&gt;
-
-&lt;p&gt;淘宝退货业务状态图如下所示:&lt;br /&gt;
-&lt;img src=&quot;/img/in-post/2018-5-6-SAD-HW6/taobao_state_model.png&quot; alt=&quot;Taobao_state_model&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 06 May 2018 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/05/06/SAD-HW6/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/05/06/SAD-HW6/</guid>
-        
-        <category>homework</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>系统分析与设计 Homework5</title>
-        <description>&lt;h2 id=&quot;领域建模&quot;&gt;领域建模&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;阅读-asg_rh-文档按用例构建领域模型&quot;&gt;阅读 Asg_RH 文档，按用例构建领域模型。&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-4-29-SAD-HW5/Asg_RH_class_model.png&quot; alt=&quot;Asg_RH_class_model&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;数据库建模e-r-模型&quot;&gt;数据库建模(E-R 模型)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;按 Task 3 要求，给出系统的 E-R 模型（数据逻辑模型）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-4-29-SAD-HW5/Asg_RH_database.png&quot; alt=&quot;Asg_RH_database&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;导出的 MySQL 脚本：&lt;/p&gt;
-
-    &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- +---------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- | MODEL       : Asg_RH&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- | AUTHOR      : &lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- | GENERATED BY: Open System Architect&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- +---------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- | WARNING     : Review before execution&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- +---------------------------------------------------------&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;-- +---------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- | CREATE&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- +---------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`Customer`&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;customerID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;firstName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;lastName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;gender&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;smoking&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;customerID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`Hotel`&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;hotelID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hotelID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`RoomDescription`&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;roomType&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLOAT&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`Room`&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;roomNumber&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;hotelID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;roomNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INDEX&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idxRoom1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Room&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;hotelID&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`Reservation`&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;reservationID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;checkInDate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;checkOutDate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLOAT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;customerID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;customerID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reservationID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`CreditCard`&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;cardNumber&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;cardSecurityCode&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CHAR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;customerID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cardNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INDEX&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idxCreditCard1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CreditCard&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;customerID&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;数据库逻辑模型 与 领域模型 的异同&lt;/p&gt;
-
-    &lt;p&gt;异: &lt;br /&gt;
-数据库逻辑模型通过模型定义来表示存储于数据库的持久性数据;&lt;br /&gt;
-领域模型则是将某个特定领域内的事物抽象成概念类,从而对现实世界中的对象进行可视化表示。
-因此, 领域模型中可以包括没有属性的概念类, 而数据库逻辑模型则不行, 而且会排除需求中没有明确要求记录其相关信息的类。&lt;/p&gt;
-
-    &lt;p&gt;同: &lt;br /&gt;
-在对实体自身和实体间关系的描述上相似, 有助于分析与设计。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 29 Apr 2018 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/04/29/SAD-HW5/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/04/29/SAD-HW5/</guid>
-        
-        <category>homework</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>系统分析与设计 Homework3</title>
-        <description>&lt;h2 id=&quot;1用例建模&quot;&gt;1、用例建模&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;a. 阅读 Asg_RH 文档，绘制用例图。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-4-20-SAD-HW3/Asg_RH_UML.png&quot; alt=&quot;Asg_RH_UML&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;b. 选择你熟悉的定旅馆在线服务系统（或移动 APP），绘制用例图。并满足以下要求：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;对比 Asg_RH 用例图，请用色彩标注出创新用例或子用例&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;尽可能识别外部系统，并用色彩标注新的外部系统和服务&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-4-20-SAD-HW3/去哪儿_UML.png&quot; alt=&quot;去哪儿_UML&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;c. 对比两个时代、不同地区产品的用例图，总结在项目早期，发现创新的思路与方法。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;对比以上两个用例图，可以发现, 最为直观的是”去哪儿”的用例会更多, 即其提供给用户的功能更为丰富。&lt;/p&gt;
-
-&lt;p&gt;发现创新的思路与方法(总结):&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;以用户为中心, 思考其需求, 抓住痛点;&lt;/li&gt;
-  &lt;li&gt;借鉴已有的类似产品, 并在其基础上思考不足之处, 进行创新;&lt;/li&gt;
-  &lt;li&gt;注重用户反馈, 采纳合理建议, 进行改进与创新。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;d. 请使用 SCRUM 方法，在（任务b）用例图基础上，编制某定旅馆开发的需求（backlog）。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;ID&lt;/th&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Imp&lt;/th&gt;
-      &lt;th&gt;Est&lt;/th&gt;
-      &lt;th&gt;How to demo&lt;/th&gt;
-      &lt;th&gt;Notes&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;Search Hotel&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;用户输入地点和入住/离店日期，搜索合适的酒店, (或通过地图搜索)&lt;/td&gt;
-      &lt;td&gt;注意输入的合法性检测&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;Reserve Hotel&lt;/td&gt;
-      &lt;td&gt;30&lt;/td&gt;
-      &lt;td&gt;30&lt;/td&gt;
-      &lt;td&gt;用户在列表中选择相应酒店, 并进行房间选择, 预约信息确认和付款等操作&lt;/td&gt;
-      &lt;td&gt;注意付款操作的原子性, 避免交易意外中断引起的不良后果&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;Comment Hotel&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;用户可查看其他用户对酒店的评价内容或对住过的酒店进行评价&lt;/td&gt;
-      &lt;td&gt;UI要简洁美观&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;Manage Order&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;20&lt;/td&gt;
-      &lt;td&gt;用户进行订单的信息确认, 移除等&lt;/td&gt;
-      &lt;td&gt;需要验进行用户身份验证&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;2业务建模&quot;&gt;2、业务建模&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;a. 在（任务b）基础上，用活动图建模找酒店用例。简述利用流程图发现子用例的方法。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;上述任务b对应的活动图如下所示:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-4-20-SAD-HW3/去哪儿_activity.png&quot; alt=&quot;去哪儿_activity&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;利用流程图发现子用例的方法:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;对于流程图中某些连续且可抽象的步骤,可将其共同作为一个子用例;&lt;/li&gt;
-  &lt;li&gt;对于其他不可进一步抽象的步骤, 将其作为独立的子用例;&lt;/li&gt;
-  &lt;li&gt;对于流程图中的循环结构, 有时可将其作为一个子用例。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;b. 选择你身边的银行 ATM，用活动图描绘取款业务流程&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;活动图如下所示:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-4-20-SAD-HW3/bank_activity.png&quot; alt=&quot;bank_activity&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;c. 查找淘宝退货业务官方文档，使用多泳道图，表达客户、淘宝网、淘宝商家服务系统、商家等用户和系统协同完成退货业务的过程。分析客户要完成退货业务，在淘宝网上需要实现哪些系统用例&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;泳道图如下所示:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-4-20-SAD-HW3/taobao_yongdao.png&quot; alt=&quot;taobao_yongdao&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;为了完成退货业务，在淘宝网上需要实现的系统用例有：退货系统用例 和 退款系统用例。&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;3用例文本编写&quot;&gt;3、用例文本编写&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;在大作业基础上，分析三种用例文本的优点和缺点&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th&gt;优点&lt;/th&gt;
-      &lt;th&gt;缺点&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Brief&lt;/td&gt;
-      &lt;td&gt;简洁, 耗时短, 有助于快速了解主题和范围&lt;/td&gt;
-      &lt;td&gt;表达能力较差, 无法全面描述功能需求&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Casual&lt;/td&gt;
-      &lt;td&gt;相对简洁, 且可描述部分功能需求&lt;/td&gt;
-      &lt;td&gt;不仍然不够具体, 缺乏细化&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Fully&lt;/td&gt;
-      &lt;td&gt;表达能力强, 能全面描述需求&lt;/td&gt;
-      &lt;td&gt;耗时长且繁琐&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-</description>
-        <pubDate>Fri, 20 Apr 2018 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/04/20/SAD-HW3/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/04/20/SAD-HW3/</guid>
-        
-        <category>homework</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Vue 学习笔记</title>
-        <description>&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;
-
-&lt;p&gt;Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的渐进式JavaScript框架。&lt;br /&gt;
-Vue 只关注视图层， 采用自底向上增量开发的设计。&lt;br /&gt;
-Vue 的目标是通过尽可能简单的 API 实现响应的&lt;strong&gt;数据绑定&lt;/strong&gt;和组合的&lt;strong&gt;视图组件&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;安装&quot;&gt;安装&lt;/h2&gt;
-
-&lt;p&gt;兼容性: 支持所有兼容 ECMAScript 5 的浏览器, 不支持 IE8 及以下版本。&lt;/p&gt;
-
-&lt;p&gt;最新稳定版本: 2.5.16 (截至2018年4月)&lt;/p&gt;
-
-&lt;p&gt;每个版本的更新日志见 &lt;a href=&quot;https://github.com/vuejs/vue/releases&quot;&gt;vue_releases&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;引入script&quot;&gt;引入script&lt;/h3&gt;
-
-&lt;p&gt;对于Vue.js的使用, 我们可以通过直接下载对应版本并用 &amp;lt;script&amp;gt; 标签引入，Vue 会被注册为一个全局变量。&lt;/p&gt;
-
-&lt;p&gt;下面给出了两种不同的版本:  &lt;br /&gt;
-&lt;a href=&quot;https://vuejs.org/js/vue.js&quot;&gt;开发版本&lt;/a&gt;: 包含完整的警告和调试模式&lt;br /&gt;
-&lt;a href=&quot;https://vuejs.org/js/vue.min.js&quot;&gt;生产版本&lt;/a&gt;: 压缩版本, 删除了警告&lt;/p&gt;
-
-&lt;p&gt;另外, 我们还可以通过&lt;a href=&quot;https://www.zhihu.com/question/37353035&quot;&gt;CDN&lt;/a&gt;, 直接在标签中输入对应URL来链接到指定版本的Vue.js, 例如:&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;vue-devtools&quot;&gt;Vue Devtools&lt;/h3&gt;
-&lt;p&gt;vue-devtools 是一款由vue官方编写的用于调试vue应用的调试工具，该工具可以有效提高调试效率。&lt;/p&gt;
-
-&lt;p&gt;此处我是直接通过 chrome应用商店 下载安装的。&lt;/p&gt;
-
-&lt;p&gt;手动安装流程可参考  &lt;a href=&quot;https://github.com/vuejs/vue-devtools#vue-devtools&quot;&gt;vue-devtools-github&lt;/a&gt;
-或者 &lt;a href=&quot;https://segmentfault.com/a/1190000009682735&quot;&gt;Vue调试神器vue-devtools安装&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;注: 在使用前需要确认是否已在扩展程序页面的 &lt;code class=&quot;highlighter-rouge&quot;&gt;Vue.js.devtools&lt;/code&gt; 下勾选 &lt;code class=&quot;highlighter-rouge&quot;&gt;允许访问文件网址&lt;/code&gt; 选项, 没有的话是无法对本地文件使用的。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;第一个vue应用-hello-vue&quot;&gt;第一个Vue应用: Hello Vue!&lt;/h2&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- helloVue.html --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Hello Vue!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;    
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        {\{ message }\}
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./helloVue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;注: 上面的&lt;code class=&quot;highlighter-rouge&quot;&gt;{\{ message }\}&lt;/code&gt; 实际上应该去掉 &lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt; 但是去掉后jekyll会默认其为变量, 并尝试替代, 而由于并不存在该变量, 会导致无任何输出。所以加上 &lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt; 只是为了使其能够显示。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// helloVue.js&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#app'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello Vue!&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;用浏览器打开该HTML文件后可以看到网页上输出了 “Hello Vue!” 文本。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;常用指令&quot;&gt;常用指令&lt;/h2&gt;
-&lt;p&gt;Vue指令以v-开头，作用在HTML元素上(可将其视作特殊的HTML标签属性), 可以给绑定的元素添加一些特殊行为, 从而扩展HTML功能。&lt;/p&gt;
-
-&lt;h3 id=&quot;v-bind&quot;&gt;v-bind&lt;/h3&gt;
-
-&lt;p&gt;v-bind指令会将所绑定的元素节点的指定属性与Vue实例中的某个属性保持一致。&lt;br /&gt;
-语法为: &lt;code class=&quot;highlighter-rouge&quot;&gt;v-bind:attribute=&quot;property&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;例子:&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app-2&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;v-bind:title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    鼠标悬停几秒钟查看此处动态绑定的提示信息！
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#app-2'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'页面加载于 '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toLocaleString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;v-if&quot;&gt;v-if&lt;/h3&gt;
-
-&lt;p&gt;条件判断指令，根据表达式值的真假来插入或删除元素。&lt;br /&gt;
-语法为： &lt;code class=&quot;highlighter-rouge&quot;&gt;v-if = &quot;expression&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;例子:&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- html --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;v-if=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;seen&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;现在你看到我了&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// JS&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#app-3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;seen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;v-for&quot;&gt;v-for&lt;/h3&gt;
-
-&lt;p&gt;循环指令，用于遍历数组、对象等，与JavaScript遍历类似。&lt;br /&gt;
-语法为：&lt;code class=&quot;highlighter-rouge&quot;&gt;v-for = &quot;item in items&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;例子:&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- html --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app-4&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;v-for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;todo in todos&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-      
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ol&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// JS&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#app-4'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'学习 JavaScript'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'学习 Vue'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;v-on&quot;&gt;v-on&lt;/h3&gt;
-
-&lt;p&gt;v-on指令为绑定的元素节点添加一个事件监听器, 以监听DOM事件。&lt;br /&gt;
-语法为: &lt;code class=&quot;highlighter-rouge&quot;&gt;v-on:event = &quot;doSomeThing&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;例子:&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- html --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app-5&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{\{ message }\}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;v-on:click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;reverseMessage&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;逆转消息&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// JS&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#app-5'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hello Vue.js!'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;reverseMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;v-model&quot;&gt;v-model&lt;/h3&gt;
-
-&lt;p&gt;v-model指令实现了双向数据绑定, 一般用于表单输入和应用状态之间的双向绑定。&lt;br /&gt;
-语法为: &lt;code class=&quot;highlighter-rouge&quot;&gt;v-model=&quot;property&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;例子:&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- html --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app-6&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;v-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// JS&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#app-6'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hello Vue!'&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;注:&lt;br /&gt;
-    1. 以上例子均来自于Vue官网教程;&lt;br /&gt;
-    2. 该笔记将会随着学习进度持续更新。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-</description>
-        <pubDate>Sun, 15 Apr 2018 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/04/15/vue-learning/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/04/15/vue-learning/</guid>
-        
-        <category>JS</category>
-        
-        <category>vue</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>系统分析与设计 Homework2</title>
-        <description>&lt;h2 id=&quot;1简答题&quot;&gt;1、简答题&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;瀑布模型&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;优点&lt;/p&gt;
-
-            &lt;p&gt;（1）降低软件开发的复杂程度，提高软件开发过程的透明性，提高软件开发过程的可管理性；&lt;br /&gt;
-（2）推迟软件实现，强调在软件实现前必须进行分析和设计工作；&lt;br /&gt;
-（3）以项目的阶段评审和文档控制为手段有效地对整个开发过程进行指导，保证了阶段之间的正确衔接，能够及时发现并纠正开发过程中存在的缺陷，使产品达到预期的质量要求。&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;缺点&lt;/p&gt;
-
-            &lt;p&gt;（1）强调过程活动的线性顺序；&lt;br /&gt;
-（2）缺乏灵活性，特别是无法解决软件需求不明确或不准确的问题；&lt;br /&gt;
-（3）风险控制能力较弱；&lt;br /&gt;
-（4）瀑布模型中的软件活动是文档驱动的，当阶段之间规定过多的文档时，会极大地增加系统的工作量；&lt;br /&gt;
-（5）管理人员如果仅仅以文档的完成情况来评估项目完成进度，往往会产生错误的结论。&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;增量模型&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;优点&lt;/p&gt;
-
-            &lt;p&gt;（1）增强客户对系统的信心；&lt;br /&gt;
-（2）降低系统失败风险；&lt;br /&gt;
-（3）提高系统可靠性；&lt;br /&gt;
-（4）提高系统的稳定性和可维护性。&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;缺点&lt;/p&gt;
-
-            &lt;p&gt;（1）增量粒度难以选择； &lt;br /&gt;
-（2）确定所有的基本业务服务比较困难。&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;螺旋模型&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;优点&lt;/p&gt;
-
-            &lt;p&gt;（1）设计上的灵活性,可以在项目的各个阶段进行变更；&lt;/p&gt;
-
-            &lt;p&gt;（2）以小的分段来构建大型系统,使成本计算变得简单容易；&lt;/p&gt;
-
-            &lt;p&gt;（3）客户始终参与每个阶段的开发,保证了项目不偏离正确方向以及项目的可控性；&lt;/p&gt;
-
-            &lt;p&gt;（4） 随着项目推进,客户始终掌握项目的最新信息 , 从而他或她能够和管理层有效地交互。&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;缺点&lt;/p&gt;
-
-            &lt;p&gt;（1）采用螺旋模型需要具有相当丰富的风险评估经验和专门知识，在风险较大的项目开发中，如果未能够及时标识风险，势必造成重大损失；&lt;/p&gt;
-
-            &lt;p&gt;（2）过多的迭代次数会增加开发成本，延迟提交时间。&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;简述 UP 的三大特点，其中哪些内容体现了用户驱动的开发，哪些内容体现风险驱动的开发？&lt;/p&gt;
-
-    &lt;p&gt;（1）用例驱动（use case driven）&lt;/p&gt;
-
-    &lt;p&gt;​	  开发团队在软件开发的整个过程中（从需求分析到编码和测试）都使用到具体用例进行分析；&lt;/p&gt;
-
-    &lt;p&gt;（2）以架构为中心（architecture centric）&lt;/p&gt;
-
-    &lt;p&gt;​	  架构为软件开发的其他过程提供指导（即在构建好架构后，软件开发围绕其进行）；&lt;/p&gt;
-
-    &lt;p&gt;（3）受控的迭代式增量开发（iterative and evolutionary）&lt;/p&gt;
-
-    &lt;p&gt;​	  在开发过程中反复进行系统迭代与增量，从而有效管理需求变化，使程序系统逐步趋向稳定。&lt;/p&gt;
-
-    &lt;p&gt;迭代与增量体现了用户驱动的开发，以架构为中心体现了风险驱动的开发。&lt;/p&gt;
-
-    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;UP 四个阶段的划分准则是什么？关键的里程碑是什么？&lt;/p&gt;
-
-    &lt;p&gt;划分准则：&lt;strong&gt;时间&lt;/strong&gt; &amp;amp; &lt;strong&gt;UP的核心工作流程&lt;/strong&gt;&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;thead&gt;
-        &lt;tr&gt;
-          &lt;th&gt; &lt;/th&gt;
-          &lt;th style=&quot;text-align: center&quot;&gt;初始阶段（Inception）&lt;/th&gt;
-          &lt;th style=&quot;text-align: center&quot;&gt;精化阶段（Elaboration）&lt;/th&gt;
-          &lt;th style=&quot;text-align: center&quot;&gt;构建阶段（Construction）&lt;/th&gt;
-          &lt;th style=&quot;text-align: center&quot;&gt;交付阶段（Transition）&lt;/th&gt;
-        &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;里程碑&lt;/td&gt;
-          &lt;td style=&quot;text-align: center&quot;&gt;生命周期目标 (Lifecycle Objective) 里程碑，包括一些重要的文档，如：项目构想 (Vision)、原始用例模型、原始业务风险评估、一个或者多个原型、原始业务案例等。需要对这些文档进行评审，以确定正确理解用例需求、项目风险评估合理、阶段计划可行等。&lt;/td&gt;
-          &lt;td style=&quot;text-align: center&quot;&gt;生命周期体系结构 (Lifecycle Architecture) 里程碑。包括风险分析文档、软件体系结构基线、项目计划、可执行的进化原型、初始版本的用户手册等。通过评审确定软件体系结构已经稳定、高风险的业务需求和技术机制已经解决、修订的项目计划可行等。&lt;/td&gt;
-          &lt;td style=&quot;text-align: center&quot;&gt;初始运行能力 (Initial Operational Capability) 里程碑。包括可以运行的软件产品、用户手册等，它决定了产品是否可以在测试环境中进行部署。此刻，要确定软件、环境、用户是否可以开始系统的运行。&lt;/td&gt;
-          &lt;td style=&quot;text-align: center&quot;&gt;产品发布 (Product Release) 里程碑。确定最终目标是否实现，是否应该开始产品下一个版本的另一个开发周期。在一些情况下这个里程碑可能与下一个周期的初始阶段的相重合。&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-
-    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;IT 项目管理中，“工期、质量、范围/内容” 三个元素中，在合同固定条件下，为什么说“范围/内容”是项目团队是易于控制的？&lt;/p&gt;
-
-    &lt;p&gt;在合同固定条件下，工期和质量在合同中已确定，不可轻易更改，而项目的范围或内容则可以根据软件开发过程中遇到的具体情况，在项目团队与甲方商议后，做出调整，从而得以控制。&lt;/p&gt;
-
-    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;为什么说，UP 为企业按固定节奏生产、固定周期发布软件产品提供了依据？&lt;/p&gt;
-
-    &lt;p&gt;UP将软件生命周期在时间上分解为四个顺序的阶段，并严格按照时间顺序进行软件开发，使得企业可以按固定节奏生产。&lt;/p&gt;
-
-    &lt;p&gt;另外，UP将每个阶段结束于一个主要的里程碑 (Major Milestone)，并在阶段结尾执行一次评估以确定这个阶段的目标是否已经满足。如果评估结果令人满意的话，可以允许项目进入下一个阶段， 从而保证了软件产品的质量，降低各种可能的风险，使得企业可以按固定周期发布软件产品。&lt;/p&gt;
-
-    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2项目管理使用&quot;&gt;2、项目管理使用&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;使用截图工具（png格式输出），展现你团队的任务 Kanban，请注意以下要求
-    &lt;ul&gt;
-      &lt;li&gt;每个人的任务是明确的。即一周后可以看到具体成果&lt;/li&gt;
-      &lt;li&gt;每个人的任务是1-2项。&lt;/li&gt;
-      &lt;li&gt;至少包含一个团队活动任务&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/in-post/2018-3-22-SAD-HW2/kanban.png&quot; alt=&quot;kanban&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 22 Mar 2018 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/03/22/SAD-HW2/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/03/22/SAD-HW2/</guid>
-        
-        <category>homework</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>系统分析与设计 Homework1</title>
-        <description>&lt;h2 id=&quot;1-简单题&quot;&gt;1. 简单题&lt;/h2&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;软件工程定义&quot;&gt;软件工程定义&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;IEEE: &lt;br /&gt;
-  (1) 将系统化、规范化、可度量的方法应用与软件的开发、运行和维护的过程, 即将工程化应用于软件中。 &lt;br /&gt;
-  (2) 对(1)中所述方法的研究。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;软件工程是指导计算机软件开发和维护的工程学科。采用工程的概念、原理、技术和方法来开发与维护软件,把经过实践考验而证明正确的管理技术和当前能够得到的最的技术方法结合起来,这就是软件工程。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;阅读经典名著人月神话等资料解释-software-crisiscocomo-模型&quot;&gt;阅读经典名著“人月神话”等资料，解释 software crisis、COCOMO 模型。&lt;/h3&gt;
-
-&lt;h4 id=&quot;软件危机software-crisis&quot;&gt;软件危机(software crisis)&lt;/h4&gt;
-
-&lt;h5 id=&quot;背景&quot;&gt;背景&lt;/h5&gt;
-&lt;p&gt;六十年代以来,随着计算机应用需求的驱动,系统软件和应用软件有很大的发展,如操作系统,编译系统和大型应用软件等。由于软件生产的复杂性和高成本,使大型软件的生产出现了很大的困难,即出现软件危机。&lt;/p&gt;
-
-&lt;h5 id=&quot;表现形式&quot;&gt;表现形式&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;软件开发成本日益增长
-    &lt;ul&gt;
-      &lt;li&gt;开发成本超出预算&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;软件开发进度难以控制
-    &lt;ul&gt;
-      &lt;li&gt;实际进度比预定计划一再拖延&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;用户对 “已完成” 系统不满意的现象经常发生
-    &lt;ul&gt;
-      &lt;li&gt;用户需求不明确&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;软件产品的质量不可靠
-    &lt;ul&gt;
-      &lt;li&gt;Bug &amp;amp; Patch&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;软件的可维护程度低
-    &lt;ul&gt;
-      &lt;li&gt;数量不断膨胀的软件产品缺乏适当的文档资料&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;软件开发生产率跟不上硬件的发展和人们需求的增长&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;原因&quot;&gt;原因&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;软件危机的根源
-    &lt;ul&gt;
-      &lt;li&gt;软件的大量需求与软件生产力效率之间的矛盾&lt;/li&gt;
-      &lt;li&gt;软件系统的复杂性与软件开发方法之间的矛盾&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;软件本身的特点
-    &lt;ul&gt;
-      &lt;li&gt;软件是一种抽象逻辑&lt;/li&gt;
-      &lt;li&gt;软件是开发人员的智力劳动成果&lt;/li&gt;
-      &lt;li&gt;软件具备强烈的个性化特征&lt;/li&gt;
-      &lt;li&gt;软件规模日趋庞大,实现的业务逻辑与流程复杂&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;软件开发的客观因素
-    &lt;ul&gt;
-      &lt;li&gt;系统需求分析不足&lt;/li&gt;
-      &lt;li&gt;开发周期管理不善&lt;/li&gt;
-      &lt;li&gt;开发过程缺乏规范&lt;/li&gt;
-      &lt;li&gt;质量控制标准规程滞后&lt;/li&gt;
-      &lt;li&gt;软件维护计划被忽视&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;产业因素
-    &lt;ul&gt;
-      &lt;li&gt;软件企业的作坊式管理&lt;/li&gt;
-      &lt;li&gt;软件企业规模的急剧膨胀&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;危机的消除&quot;&gt;危机的消除&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;解决途径
-    &lt;ul&gt;
-      &lt;li&gt;正确认识计算机软件的内涵 (软件≠程序)&lt;/li&gt;
-      &lt;li&gt;充分认识到软件开发不是某种个体劳动的神秘技巧,而是一种组织良好、管理严密、协同配合的工程活动&lt;/li&gt;
-      &lt;li&gt;采用成熟的软件开发技术和方法&lt;/li&gt;
-      &lt;li&gt;开发和使用适当的软件工具&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;实施办法
-    &lt;ul&gt;
-      &lt;li&gt;组织管理
-        &lt;ul&gt;
-          &lt;li&gt;采用工程项目管理方法&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;技术措施
-        &lt;ul&gt;
-          &lt;li&gt;采用软件开发技术、方法与软件工具&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;cocomo模型&quot;&gt;COCOMO模型&lt;/h4&gt;
-
-&lt;p&gt;COCOMO，英文全称为constructive cost model，中文为构造性成本模型。它是一种精确、易于使用的，基于模型的成本估算方法，最早由勃姆 （Boehm） 于 1981 年提出。从本质上说是一种参数化的项目估算方法，参数建模是把项目的某些特征作为参数，通过建立一个数字模型预测项目成本（类似于居住面积作为参数计算的整体的住房成本）。&lt;/p&gt;
-
-&lt;p&gt;在该模型中使用的基本量有以下几个：&lt;br /&gt;
-（1）DSI（源指令条数），定义为代码行数，包括除注释行以外的全部代码。若一行有两个语句，则算做一条指令。 &lt;br /&gt;
-（2）MM（度量单位为人月）表示开发工作量。 &lt;br /&gt;
-（3）TDEV（度量单位为月）表示开发进度，由工作量决定。  &lt;br /&gt;
-（4）COCOMO 模型重点考虑 15 种影响软件工作量的因素，并通过定义乘法因子，从而准确、合理地估算软件的工作量。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;软件生命周期&quot;&gt;软件生命周期。&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;软件生命周期的概念
-    &lt;ul&gt;
-      &lt;li&gt;计算机软件有一个孕育、诞生、成长、成熟、衰亡的生存过程,即软件的生命周期 (也称软件开发生命周期 &lt;strong&gt;SDLC&lt;/strong&gt; 或软件开发过程)。软件生命周期被划分为若干阶段,每个阶段有明确的任务,从而使规模、结构和管理复杂的软件开发过程得到适当的控制和管理。&lt;/li&gt;
-      &lt;li&gt;软件生命周期包括可行性分析与开发计划、需求分析、设计 (概要设计和详细设计)、编码实现、测试、运行与维护等活动,将这些活动以适当的方式分配到不同的阶段去完成。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;软件生命周期的6个阶段
-    &lt;ul&gt;
-      &lt;li&gt;可行性分析与计划阶段
-        &lt;ul&gt;
-          &lt;li&gt;确定软件开发的总体目标,给出功能、性能、可靠性以及接口
-  等方面的要求,进行完成可行性分析。&lt;/li&gt;
-          &lt;li&gt;估计可利用的资源 (硬件、软件、人力等)、成本、效益、开发
-  进度,进行投资-收益分析,制订开发计划。&lt;/li&gt;
-          &lt;li&gt;提交可行性分析报告、开发计划等文档。&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;需求分析阶段
-        &lt;ul&gt;
-          &lt;li&gt;分析用户提出的要求,给出需求详细定义,确定软件系统的各
-  项功能、性能需求和设计约束,确定对文档编制的要求。&lt;/li&gt;
-          &lt;li&gt;提交软件需求说明、软件规格说明、数据要求说明等文档和初
-  步的用户手册。&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;设计阶段
-        &lt;ul&gt;
-          &lt;li&gt;概要设计: 把各项需求转换成软件的体系结构。结构中每一组
-  成部分都是意义明确的模块,每个模块都和某些需求相对应。&lt;/li&gt;
-          &lt;li&gt;详细设计: 对每个模块所要完成的工作进行具体的描述,提供
-  源程序编写的直接依据。&lt;/li&gt;
-          &lt;li&gt;提交结构设计说明、详细设计说明和测试计划初稿等文档。&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;实现阶段
-        &lt;ul&gt;
-          &lt;li&gt;完成源程序的编码、编译 (或汇编) 和排错调试,得到没有语法
-  错误的程序清单。程序结构良好、清晰易读,且与设计相一致&lt;/li&gt;
-          &lt;li&gt;编写进度日报、周报和月报 (取决于项目的重要性和规模)。&lt;/li&gt;
-          &lt;li&gt;提交用户手册、操作手册等面向用户的文档的编写工作。&lt;/li&gt;
-          &lt;li&gt;编制测试计划。&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;测试阶段
-        &lt;ul&gt;
-          &lt;li&gt;全面测试目标软件系统,并检查审阅已编制的文档,提交测试
-  分析报告。逐项评价所生产的程序、文档以及开发工作本身,
-  提交项目开发总结报告。&lt;/li&gt;
-          &lt;li&gt;在整个开发过程中 (即前五个阶段中),开发集体需要按月编写
-  开发进度月报。&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;运行与维护阶段
-        &lt;ul&gt;
-          &lt;li&gt;软件提交给用户后,在运行使用中得到持续维护,根据用户新
-  提出的需求进行必要而且可能的扩充、删改、更新和升级。&lt;/li&gt;
-          &lt;li&gt;软件维护包括改正性维护 (发现错误)、适应性维护 (适应运行环
-  境变化) 和完善性维护 (增强功能)。&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;按照-swebok-的-ka-划分本课程关注哪些-ka-或-知识领域&quot;&gt;按照 SWEBok 的 KA 划分，本课程关注哪些 KA 或 知识领域？&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;软件需求(software requirements)&lt;/li&gt;
-  &lt;li&gt;软件设计(software design)&lt;/li&gt;
-  &lt;li&gt;软件构建(software construction)&lt;/li&gt;
-  &lt;li&gt;软件工程过程(software engineering process)&lt;/li&gt;
-  &lt;li&gt;软件工程工具与方法(software engineering models and methods)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;解释-cmmi-的五个级别例如level-1---initial无序自发生产模式&quot;&gt;解释 CMMI 的五个级别。例如：Level 1 - Initial：无序，自发生产模式。&lt;/h3&gt;
-
-&lt;p&gt;1． 初始级(Level1 - Initial)  &lt;br /&gt;
-　　软件过程无序，有时甚至混乱，对过程几乎没有定义，成功取决于个人努力。管理是反应式的。 &lt;br /&gt;
-2．可管理级(Level2 - Managed)  &lt;br /&gt;
-　　建立了基本的项目管理过程来跟踪费用、进度和功能特性。制定了必要的过程纪律，能重复早先类似应用项目取得的成功经验。  &lt;br /&gt;
-3． 已定义级(Level3 - Defined)  &lt;br /&gt;
-　　已将软件管理和工程两方面的过程文档化、标准化，并综合成该组织的标准软件过程。所有项目均使用经批准、剪裁的标准软件过程来开发和维护软件，软件产品的生产在整个软件过程是可见的。  &lt;br /&gt;
-4． 量化管理级(Level4 - Quantitatively Managed) &lt;br /&gt;
-　　分析对软件过程和产品质量的详细度量数据，对软件过程和产品都有定量的理解与控制。管理有一个作出结论的客观依据，管理能够在定量的范围内预测性能。 &lt;br /&gt;
-5． 优化级(Level5 - Optimizing) &lt;br /&gt;
-　　过程的量化反馈和先进的新思想、新技术促使过程持续不断改进。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;用自己语言简述-swebok-或-cmmi-约200字&quot;&gt;用自己语言简述 SWEBok 或 CMMI （约200字）&lt;/h3&gt;
-
-&lt;p&gt;SWEBok(Software Engineering Body of Knowledge) 是一个详细说明了当今普遍接受的软件工程知识体系的国际标准(ISO/IEC TR 19759:2005)。
-IEEE为此专门发布了一个指南(SWEBOK Guide),它全面描述了软件工程实践所需的知识, 用于为如今普遍接受的软件工程知识体系提供指导。
-该指南一共定义了软件工程领域中的 &lt;strong&gt;10个&lt;/strong&gt; 知识领域(注:2004版为10个,2016年发布V3版本则增加为15个)。
-其中,&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;软件需求(software requirements)&lt;/li&gt;
-  &lt;li&gt;软件设计(software design)&lt;/li&gt;
-  &lt;li&gt;软件构建(software construction)&lt;/li&gt;
-  &lt;li&gt;软件工程过程(software engineering process)&lt;/li&gt;
-  &lt;li&gt;软件工程工具与方法(software engineering models and methods)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;这几个知识领域我认为使我们这门课程较为关注的。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;2-解释-psp-各项指标及技能要求&quot;&gt;2. 解释 PSP 各项指标及技能要求&lt;/h2&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;PSP2.1&lt;/th&gt;
-      &lt;th&gt;解释&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Planning&lt;/td&gt;
-      &lt;td&gt;计划&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Estimate&lt;/td&gt;
-      &lt;td&gt;● 估计这个任务需要多少时间&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Development&lt;/td&gt;
-      &lt;td&gt;开发&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Analysis&lt;/td&gt;
-      &lt;td&gt;● 分析需求&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Design Spec&lt;/td&gt;
-      &lt;td&gt;● 生成设计文档&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Design Review&lt;/td&gt;
-      &lt;td&gt;● 设计复审(和同事审核设计文档)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Coding Standard&lt;/td&gt;
-      &lt;td&gt;● 代码规范(为目前的开发制定合适的规范)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Design&lt;/td&gt;
-      &lt;td&gt;● 具体设计&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Coding&lt;/td&gt;
-      &lt;td&gt;● 具体编码&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Code Review&lt;/td&gt;
-      &lt;td&gt;● 代码复审&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;● Test&lt;/td&gt;
-      &lt;td&gt;● 测试(包括自测, 修改代码, 提交修改)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Record Time Spent&lt;/td&gt;
-      &lt;td&gt;记录用时&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Test Report&lt;/td&gt;
-      &lt;td&gt;测试报告&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size Measurement&lt;/td&gt;
-      &lt;td&gt;计算工作量&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Postmortem&lt;/td&gt;
-      &lt;td&gt;事后总结&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Process Improvement Plan&lt;/td&gt;
-      &lt;td&gt;提出过程改进计划&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-        <pubDate>Mon, 12 Mar 2018 09:00:00 +0000</pubDate>
-        <link>http://localhost:4000/2018/03/12/SAD-HW1/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/03/12/SAD-HW1/</guid>
-        
-        <category>homework</category>
-        
-        
-      </item>
     
       <item>
         <title>利用OpenVPN搭建简单VPN</title>
@@ -1699,6 +464,918 @@ Use --help for more information.
         <guid isPermaLink="true">http://localhost:4000/2017/11/23/construct-VPN/</guid>
         
         <category>VPN</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Go negroni-gzip源码分析</title>
+        <description>&lt;h2 id=&quot;gzip概念&quot;&gt;gzip概念&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;GZIP最早由Jean-loup Gailly和Mark Adler创建，用于UNⅨ系统的文件压缩。我们在Linux中经常会用到后缀为.gz的文件，它们就是GZIP格式的。现今已经成为Internet 上使用非常普遍的一种数据压缩格式，或者说一种文件格式。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;gzip可用来对静态文件进行压缩, 以减少文件的传输时间和存储空间, 。大流量的WEB站点常常使用GZIP压缩技术来让减少响应时间, 提升用户的使用体验, 但同时压缩步骤的加入会增加服务器的负荷, 可以说是一种 “trade-off”。&lt;/p&gt;
+
+&lt;p&gt;对于gzip, golang内置有&lt;code class=&quot;highlighter-rouge&quot;&gt;compress/gzip&lt;/code&gt;包可供使用。&lt;/p&gt;
+
+&lt;p&gt;此处主要对用于 &lt;a href=&quot;https://github.com/urfave/negroni&quot;&gt;Negroni&lt;/a&gt; 组件的&lt;a href=&quot;https://github.com/phyber/negroni-gzip&quot;&gt;gzip&lt;/a&gt;包进行源码分析。&lt;/p&gt;
+
+&lt;p&gt;该gzip包内部使用了go提供的 &lt;code class=&quot;highlighter-rouge&quot;&gt;compress/gzip&lt;/code&gt; 包,  具体实现并不复杂。&lt;/p&gt;
+
+&lt;h2 id=&quot;用法&quot;&gt;用法&lt;/h2&gt;
+&lt;p&gt;下面为开发者提供的一个简单样例:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;fmt&quot;&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;net/http&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;s2&quot;&gt;&quot;github.com/urfave/negroni&quot;&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;github.com/phyber/negroni-gzip/gzip&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewServeMux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HandleFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ResponseWriter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    	  &lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Welcome to the home page!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;negroni&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Classic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gzip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Gzip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gzip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DefaultCompression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;:3000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;该样例使用了negroni, 并在其中启用了gzip中间件, 该中间件在 request 预处理 或 response 后处理中对文件进行压缩或解压。&lt;/p&gt;
+
+&lt;h2 id=&quot;negroni-gzip-源码分析&quot;&gt;negroni-gzip 源码分析&lt;/h2&gt;
+
+&lt;p&gt;此处对 negroni-gzip 源码的分析分为两部分:&lt;/p&gt;
+
+&lt;p&gt;对其中定义的结构体和常量的解释, 以及对函数和方法的分析。&lt;/p&gt;
+
+&lt;h3 id=&quot;结构体--常量&quot;&gt;结构体 &amp;amp; 常量&lt;/h3&gt;
+
+&lt;h4 id=&quot;gzipresponsewriter结构体&quot;&gt;gzipResponseWriter结构体&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type gzipResponseWriter struct {
+	w *gzip.Writer
+	negroni.ResponseWriter
+	wroteHeader bool
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;结构体成员&lt;/th&gt;
+      &lt;th&gt;类型&lt;/th&gt;
+      &lt;th&gt;解释&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;w&lt;/td&gt;
+      &lt;td&gt;*gzip.Writer&lt;/td&gt;
+      &lt;td&gt;用于写数据&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;negroni.ResponseWriter&lt;/td&gt;
+      &lt;td&gt;匿名成员, gzipResponseWriter结构体可直接访问该接口的方法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;wroteHeader&lt;/td&gt;
+      &lt;td&gt;bool&lt;/td&gt;
+      &lt;td&gt;记录是否已写了header, 避免重复写header&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;handler结构体&quot;&gt;handler结构体&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type handler struct {
+	pool sync.Pool
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;handler结构体中只有一个成员 pool (类型为sync包中定义的&lt;a href=&quot;https://go-zh.org/pkg/sync/#Pool&quot;&gt;Pool&lt;/a&gt;结构体)&lt;/p&gt;
+
+&lt;p&gt;pool 的作用是用于缓存那些已经分配了内存但是暂时还未使用的数据, 以供后续使用。(同时pool能够保证多个goroutines同时使用它时的安全性)&lt;/p&gt;
+
+&lt;p&gt;其Put方法可以将一个任意类型的数据放入pool中;&lt;/p&gt;
+
+&lt;p&gt;还有一个Get方法则可以从pool中随机选择一个item, 将其从pool中移除, 并返回给调用者。&lt;/p&gt;
+
+&lt;h4 id=&quot;常量&quot;&gt;常量&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const (
+	encodingGzip = &quot;gzip&quot;
+
+	headerAcceptEncoding  = &quot;Accept-Encoding&quot;
+	headerContentEncoding = &quot;Content-Encoding&quot;
+	headerContentLength   = &quot;Content-Length&quot;
+	headerContentType     = &quot;Content-Type&quot;
+	headerVary            = &quot;Vary&quot;
+	headerSecWebSocketKey = &quot;Sec-WebSocket-Key&quot;
+
+	BestCompression    = gzip.BestCompression
+	BestSpeed          = gzip.BestSpeed
+	DefaultCompression = gzip.DefaultCompression
+	NoCompression      = gzip.NoCompression
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;注: 以上常量实际上是开发者直接从 &lt;code class=&quot;highlighter-rouge&quot;&gt;compress/gzip&lt;/code&gt; 包中复制过来的。&lt;/p&gt;
+
+&lt;h3 id=&quot;gzip函数&quot;&gt;Gzip函数&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Gzip returns a handler which will handle the Gzip compression in ServeHTTP.
+// Valid values for level are identical to those in the compress/gzip package.
+func Gzip(level int) *handler {
+	h := &amp;amp;handler{}
+	h.pool.New = func() interface{} {
+		gz, err := gzip.NewWriterLevel(ioutil.Discard, level)
+		if err != nil {
+			panic(err)
+		}
+		return gz
+	}
+	return h
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Gzip函数初始化了一个空handler结构体
+并对其成员赋初值,
+然后返回该handler h, 传给negroni的Use方法。&lt;/p&gt;
+
+&lt;p&gt;注: 由于handler结构体类型定义了其ServeHTTP方法(该方法下面会进行分析), 所以handler实现了negroni.Handler接口(negroni的Use方法所需的传入参数), 可以赋值给该接口。&lt;/p&gt;
+
+&lt;h3 id=&quot;handlerservehttp方法&quot;&gt;handler.ServeHTTP方法&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// ServeHTTP wraps the http.ResponseWriter with a gzip.Writer.
+func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	// Skip compression if the client doesn't accept gzip encoding.
+	if !strings.Contains(r.Header.Get(headerAcceptEncoding), encodingGzip) {juhao
+		next(w, r)
+		return
+	}
+
+	// Skip compression if client attempt WebSocket connection
+	if len(r.Header.Get(headerSecWebSocketKey)) &amp;gt; 0 {
+		next(w, r)
+		return
+	}
+
+	// Retrieve gzip writer from the pool. Reset it to use the ResponseWriter.
+	// This allows us to re-use an already allocated buffer rather than
+	// allocating a new buffer for every request.
+	// We defer g.pool.Put here so that the gz writer is returned to the
+	// pool if any thing after here fails for some reason (functions in
+	// next could potentially panic, etc)
+	gz := h.pool.Get().(*gzip.Writer)
+	defer h.pool.Put(gz)
+	gz.Reset(w)juhao
+
+	// Wrap the original http.ResponseWriter with negroni.ResponseWriter
+	// and create the gzipResponseWriter.
+	nrw := negroni.NewResponseWriter(w)
+	grw := gzipResponseWriter{gz, nrw, false}
+
+	// Call the next handler supplying the gzipResponseWriter instead of
+	// the original.
+	next(&amp;amp;grw, r)
+
+	// Delete the content length after we know we have been written to.
+	grw.Header().Del(headerContentLength)
+
+	gz.Close()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;handler.ServeHTTP方法 的具体实现其实上述代码的注释中已经解释得很清晰了:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;对于某些情况(客户端不支持gzip编码 或 客户端正尝试建立socket连接)跳过压缩步骤, 直接进入下一个中间件处理;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;从pool中提取出 gzip writer, 并将其重置;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;调用 negroni.NewResponseWriter 方法 得到一个封装了http.ResponseWriter 以及 其它一些方法 的 negroni.ResponseWriter接口;(具体可见&lt;a href=&quot;https://github.com/urfave/negroni/blob/master/response_writer.go&quot;&gt;negroni相应源码&lt;/a&gt;)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将从第二第三步中得到的 gzip writer 和 negroni.ResponseWriter 作为初值 初始化创建一个 gzipResponseWriter结构体实例, 并将其传给下一个中间件;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;收尾工作。将gzipResponseWriter Header中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;headerContentLength&lt;/code&gt; 字段删除 并 关闭 gzip writer&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;gzipresponsewriterwriteheader方法&quot;&gt;gzipResponseWriter.WriteHeader方法&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Check whether underlying response is already pre-encoded and disable
+// gzipWriter before the body gets written, otherwise encoding headers
+func (grw *gzipResponseWriter) WriteHeader(code int) {
+	headers := grw.ResponseWriter.Header()
+	if headers.Get(headerContentEncoding) == &quot;&quot; {
+		headers.Set(hegoaderContentEncoding, encodingGzip)
+		headers.Add(headerVary, headerAcceptEncoding)
+	} else {
+		grw.w.Reset(ioutil.Discard)
+		grw.w = nil
+	}
+	grw.ResponseWriter.WriteHeader(code)
+	grw.wroteHeader = true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如注释中所说, 该方法首先会检查 response 是否已经进行了编码,&lt;/p&gt;
+
+&lt;p&gt;如果是, 则不会再进行gzip编码(将gzipWriter无效化并将gzipResponseWriter中类型为*gzip.Writer的成员w置空);&lt;/p&gt;
+
+&lt;p&gt;否则, 则会将header中的Content-Encoding字段 设为 “gzip”, 表示使用gzip编码。&lt;/p&gt;
+
+&lt;p&gt;最后, 无论是否使用gzip编码, 都会调用 http.ResponseWriter.WriteHeader 方法 进行基本的 Header 写操作(基于传入的返回码code)&lt;/p&gt;
+
+&lt;p&gt;注意: 由于gzipResponseWriter结构体中有一个匿名成员negroni.ResponseWriter, 而该成员(接口)中又有匿名成员http.ResponseWriter(其有一个WriteHeader方法),
+所以代码中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;grw.ResponseWriter.WriteHeader(code)&lt;/code&gt;
+其实还可以简化为 &lt;code class=&quot;highlighter-rouge&quot;&gt;grw.WriteHeader(code)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;gzipresponsewriterwrite方法&quot;&gt;gzipResponseWriter.Write方法&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Write writes bytes to the gzip.Writer. It will also set the Content-Type
+// header using the net/http library content type detection if the Content-Type
+// header was not set yet.
+func (grw *gzipResponseWriter) Write(b []byte) (int, error) {
+	if !grw.wroteHeader {
+		grw.WriteHeader(http.StatusOK)
+	}
+	if grw.w == nil {
+		return grw.ResponseWriter.Write(b)
+	}
+	if len(grw.Header().Get(headerContentType)) == 0 {
+		grw.Header().Set(headerContentType, http.DetectContentType(b))
+	}
+	return grw.w.Write(b)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;同样, 如注释所说, 该方法 写数据到gzip.Writer。
+另外, 如果header的Content-Type字段还未设置, 则会通过调用 net/http包中的DetectContentType函数来自动确定Content-Type, 并将其设置到header的Content-Type字段中。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;至此, 对negroni-gzip 的源码分析就基本完成啦。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Nov 2017 23:00:00 +0000</pubDate>
+        <link>http://localhost:4000/2017/11/21/go-negroni-gzip/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/21/go-negroni-gzip/</guid>
+        
+        <category>go</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Golang http包源码分析</title>
+        <description>&lt;h2 id=&quot;搭建简单web服务器&quot;&gt;搭建简单web服务器&lt;/h2&gt;
+&lt;p&gt;利用 Go 内置的 net/http 包, 可以快速搭建一个简单的web服务器:&lt;/p&gt;
+
+&lt;p&gt;main.go&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;fmt&quot;&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;net/http&quot;&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;strings&quot;&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;log&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handleRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ResponseWriter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;implementation&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blabla&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HandleFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handleRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Listening at port 9090...&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9090&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serve&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListenAndServe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;:9090&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;!= nil {
+&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fatal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ListenAndServe: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上面代码的运行结果就不贴出来了(因为也没什么输出hhh)&lt;/p&gt;
+
+&lt;p&gt;接下来将以上面的程序为例, 具体分析http包在内部是如何实现的。&lt;/p&gt;
+
+&lt;h2 id=&quot;http包内部实现&quot;&gt;http包内部实现&lt;/h2&gt;
+&lt;p&gt;在上面给出的代码中, 实际上关键的函数就两个:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http.HandleFunc(&quot;/&quot;, handleRequest)
+
+http.ListenAndServe(&quot;:9090&quot;, nil)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;其功能正如注释中所说, 注册处理函数, 监听端口, 提供服务(当客户端 request url 的路径为 &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt; 时, 调用handleRequest函数)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;为了了解http包的内部实现, 我们需要知道这两个函数内部究竟做了什么。&lt;/p&gt;
+
+&lt;p&gt;具体源码可在当前 &lt;code class=&quot;highlighter-rouge&quot;&gt;$GOROOT&lt;/code&gt; 下的 src 目录下找到,
+以我的电脑为例(Ubuntu 16.04), 源码的具体路径为:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib/go-1.6/src/net/http/server.go&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;注意事项:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;提供的源码路径仅供参考, 可能以后有了新版本的go, 文件目录结构又变了, 但一般内置的库都是放在 &lt;code class=&quot;highlighter-rouge&quot;&gt;$GOROOT&lt;/code&gt; 路径下的;&lt;/li&gt;
+  &lt;li&gt;http目录下有两个同名文件server.go, 我们要研究的源码在 package 为 http 的 server.go 文件中 (另一个的 package 为 httptest)。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;内置结构体--类型-定义&quot;&gt;内置结构体 &amp;amp; 类型 定义&lt;/h3&gt;
+&lt;p&gt;在对函数进行分析前, 先列出其中出现的一些结构体以及接口等的类型定义:&lt;/p&gt;
+
+&lt;h4 id=&quot;handler-接口&quot;&gt;Handler 接口&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type Handler interface {
+	ServeHTTP(ResponseWriter, *Request)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;该接口只定义了一个方法, 也就是说, 只要一个类型实现了这个 &lt;code class=&quot;highlighter-rouge&quot;&gt;ServeHTTP&lt;/code&gt; 方法, 我们就可以把该类型的变量直接赋值给 Handler接口, 这在后面的具体内部实现中多次出现, 很有用。&lt;/p&gt;
+
+&lt;h4 id=&quot;servemux-结构体&quot;&gt;ServeMux 结构体&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type ServeMux struct {
+	mu    sync.RWMutex
+	m     map[string]muxEntry
+	hosts bool // whether any patterns contain hostnames
+}
+
+type muxEntry struct {
+	explicit bool
+	h        Handler
+	pattern  string
+}
+
+// NewServeMux allocates and returns a new ServeMux.
+func NewServeMux() *ServeMux { return &amp;amp;ServeMux{m: make(map[string]muxEntry)} }
+
+var DefaultServeMux = NewServeMux()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;ServeMux结构说明
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ServeMux
+     mu    : 用于并发控制的锁
+     m     : 存有muxEntry的map (key 为 pattern)
+     hosts : 用于判断模式中是否包含主机名
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;muxEntry结构说明
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; // 每一个 muxEntry 对应一个处理函数
+ muxEntry
+     explicit : 当为 true 时表明该 pattern 已注册, 防止再次有相同 pattern 进行注册
+     h        : 处理函数 (如本例中的 handleRequest 函数)
+     pattern  : 模式 (如本例中的 &quot;/&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;DefaultServeMux 为默认的 &lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP request multiplexer&lt;/code&gt;, 当服务端程序未指明特定的 multiplexer 时, 就会使用这个http包中声明好的 ServeMux 实例。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;对于 ServeMux 结构体, http包中的注释如下所示:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;ServeMux is an HTTP request multiplexer.
+ It matches the URL of each incoming request against a list of registered
+ patterns and calls the handler for the pattern that
+ most closely matches the URL.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;简单来说, ServeMux这个结构体主要存储了不同 pattern 对应的逻辑处理函数 (存储于一个map中)。&lt;/p&gt;
+
+&lt;p&gt;对于每一个请求, 将其 url 与已注册 pattern 匹配, 若匹配成功, 则调用相应的处理函数。&lt;/p&gt;
+
+&lt;h4 id=&quot;handlerfunc类型&quot;&gt;HandlerFunc类型&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type HandlerFunc func(ResponseWriter, *Request)
+
+// ServeHTTP calls f(w, r).
+func (f HandlerFunc) ServeHTTP(w ResponseWriter, r *Request) {
+	f(w, r)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;HandlerFunc类型实现了ServeHTTP方法, 因此可以赋值给前面提到的Handler接口&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意:&lt;/strong&gt; 区分 HandlerFunc(类型) 和 HandleFunc(函数)&lt;/p&gt;
+
+&lt;h4 id=&quot;serverhandler结构体&quot;&gt;serverHandler结构体&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type serverHandler struct {
+    srv *Server
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;该结构体类型也实现了ServeHTTP方法, 也可以赋值给Handler接口&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;下面进行具体的源码分析:&lt;/p&gt;
+
+&lt;h3 id=&quot;httphandlefunc&quot;&gt;http.HandleFunc&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// HandleFunc registers the handler function for the given pattern
+// in the DefaultServeMux.
+// The documentation for ServeMux explains how patterns are matched.
+func HandleFunc(pattern string, handler func(ResponseWriter, *Request)) {
+	DefaultServeMux.HandleFunc(pattern, handler)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;http.HandleFunc 中,&lt;/p&gt;
+
+&lt;p&gt;调用了ServeMux.HandleFunc方法 (receiver 为 DefaultServeMux), 传入参数 “/” 和 handleRequest 函数&lt;/p&gt;
+
+&lt;h3 id=&quot;servemuxhandlefunc&quot;&gt;ServeMux.HandleFunc&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// HandleFunc registers the handler function for the given pattern.
+func (mux *ServeMux) HandleFunc(pattern string, handler func(ResponseWriter, *Request)) {
+	mux.Handle(pattern, HandlerFunc(handler))
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ServeMux.HandleFunc中,&lt;/p&gt;
+
+&lt;p&gt;将传入的handler (即handleRequest函数) 强制类型转换为 HandlerFunc 类型 (如前面提到的, 该类型实现了Handler接口, 可以赋值给Handler接口)&lt;/p&gt;
+
+&lt;p&gt;然后, 调用了 ServeMux.Handle 方法 (receiver 为 DefaultServeMux), 传入参数”/”和已变为 HandlerFunc 类型的 handleRequest 函数&lt;/p&gt;
+
+&lt;h3 id=&quot;servemuxhandle&quot;&gt;ServeMux.Handle&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Handle registers the handler for the given pattern.
+// If a handler already exists for pattern, Handle panics.
+func (mux *ServeMux) Handle(pattern string, handler Handler) {
+	mux.mu.Lock()
+	defer mux.mu.Unlock()
+
+	if pattern == &quot;&quot; {
+		panic(&quot;http: invalid pattern &quot; + pattern)
+	}
+	if handler == nil {
+		panic(&quot;http: nil handler&quot;)
+	}
+	if mux.m[pattern].explicit {
+		panic(&quot;http: multiple registrations for &quot; + pattern)
+	}
+
+	mux.m[pattern] = muxEntry{explicit: true, h: handler, pattern: pattern}
+
+	if pattern[0] != '/' {
+		mux.hosts = true
+	}
+
+	// Helpful behavior:
+	// If pattern is /tree/, insert an implicit permanent redirect for /tree.
+	// It can be overridden by an explicit registration.
+	n := len(pattern)
+	if n &amp;gt; 0 &amp;amp;&amp;amp; pattern[n-1] == '/' &amp;amp;&amp;amp; !mux.m[pattern[0:n-1]].explicit {
+		// If pattern contains a host name, strip it and use remaining
+		// path for redirect.
+		path := pattern
+		if pattern[0] != '/' {
+			// In pattern, at least the last character is a '/', so
+			// strings.Index can't be -1.
+			path = pattern[strings.Index(pattern, &quot;/&quot;):]
+		}
+		url := &amp;amp;url.URL{Path: path}
+		mux.m[pattern[0:n-1]] = muxEntry{h: RedirectHandler(url.String(), StatusMovedPermanently), pattern: pattern}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ServeMux.Handle中,&lt;/p&gt;
+
+&lt;p&gt;前面主要进行了输入参数(pattern 和 handler)的合法性检测&lt;/p&gt;
+
+&lt;p&gt;我们重点关注这一行代码:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mux.m[pattern] = muxEntry{explicit: true, h: handler, pattern: pattern}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这行代码声明并初始化了一个muxEntry结构体, 并根据其 pattern 将其放到 DefaultServeMux 的 map &lt;code class=&quot;highlighter-rouge&quot;&gt;m&lt;/code&gt; 中, 实现了相应路由处理函数的注册&lt;/p&gt;
+
+&lt;p&gt;(注: 将 explicit 设为 true 表明该 pattern 已注册, 当有相同 pattern 进行注册时, 会调用panic函数)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;至此, main中第一个关键函数调用 &lt;code class=&quot;highlighter-rouge&quot;&gt;http.HandleFunc(&quot;/&quot;, HandleRequest)&lt;/code&gt; 就分析完毕了, 实际上就是把 pattern(“/”) 和 handler(HandleRequest) 存入 DefaultServeMux 的 map 中&lt;/p&gt;
+
+&lt;p&gt;下面对第二个关键调用 &lt;code class=&quot;highlighter-rouge&quot;&gt;http.ListenAndServe(&quot;:9090&quot;, nil)&lt;/code&gt; 进行分析&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;httplistenandserve&quot;&gt;http.ListenAndServe&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// ListenAndServe always returns a non-nil error.
+func ListenAndServe(addr string, handler Handler) error {
+	server := &amp;amp;Server{Addr: addr, Handler: handler}
+	return server.ListenAndServe()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;http.ListenAndServe中,&lt;/p&gt;
+
+&lt;p&gt;首先用传入的参数 (“:9090” &amp;amp; nil) 初始化了一个Server结构体&lt;/p&gt;
+
+&lt;p&gt;然后调用了Server.ListenAndServe方法 (receiver 为刚创建的server)&lt;/p&gt;
+
+&lt;h3 id=&quot;serverlistenandserve&quot;&gt;Server.ListenAndServe&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// ListenAndServe listens on the TCP network address srv.Addr and then
+// calls Serve to handle requests on incoming connections.
+// Accepted connections are configured to enable TCP keep-alives.
+// If srv.Addr is blank, &quot;:http&quot; is used.
+// ListenAndServe always returns a non-nil error.
+func (srv *Server) ListenAndServe() error {
+	addr := srv.Addr
+	if addr == &quot;&quot; {
+		addr = &quot;:http&quot;
+	}
+	ln, err := net.Listen(&quot;tcp&quot;, addr)
+	if err != nil {
+		return err
+	}
+	return srv.Serve(tcpKeepAliveListener{ln.(*net.TCPListener)})
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Server.ListenAndServe中,&lt;/p&gt;
+
+&lt;p&gt;对给定的端口进行监听 (基于TCP协议)&lt;/p&gt;
+
+&lt;p&gt;并调用Server.Serve函数(receiver 为之前创建的实例 server), 传入参数 ln (调用listen函数后返回的Listener接口)&lt;/p&gt;
+
+&lt;h3 id=&quot;serverserve&quot;&gt;Server.Serve&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Serve accepts incoming connections on the Listener l, creating a
+// new service goroutine for each. The service goroutines read requests and
+// then call srv.Handler to reply to them.
+// Serve always returns a non-nil error.
+func (srv *Server) Serve(l net.Listener) error {
+	defer l.Close()
+	if fn := testHookServerServe; fn != nil {
+		fn(srv, l)
+	}
+	var tempDelay time.Duration // how long to sleep on accept failure
+	if err := srv.setupHTTP2(); err != nil {
+		return err
+	}
+	for {
+		rw, e := l.Accept()
+		if e != nil {
+			if ne, ok := e.(net.Error); ok &amp;amp;&amp;amp; ne.Temporary() {
+				if tempDelay == 0 {
+					tempDelay = 5 * time.Millisecond
+				} else {
+					tempDelay *= 2
+				}
+				if max := 1 * time.Second; tempDelay &amp;gt; max {
+					tempDelay = max
+				}
+				srv.logf(&quot;http: Accept error: %v; retrying in %v&quot;, e, tempDelay)
+				time.Sleep(tempDelay)
+				continue
+			}
+			return e
+		}
+		tempDelay = 0
+		c := srv.newConn(rw)
+		c.setState(c.rwc, StateNew) // before Serve can return
+		go c.serve()
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Server.Serve中,
+可将上述代码简化为:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for {
+    rw, e := l.Accept()
+    ...
+    c, err := srv.newConn(rw)
+    ...
+    go c.serve()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Listener 接收请求&lt;/p&gt;
+
+&lt;p&gt;当接收到请求时, 建立新连接&lt;/p&gt;
+
+&lt;p&gt;并用 goroutine 运行 conn.serve (receiver 为 建立新连接后返回的 Conn指针 &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;connserve&quot;&gt;conn.serve&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Serve a new connection.
+func (c *conn) serve() {
+	c.remoteAddr = c.rwc.RemoteAddr().String()
+	defer func() {
+		if err := recover(); err != nil {
+			const size = 64 &amp;lt;&amp;lt; 10
+			buf := make([]byte, size)
+			buf = buf[:runtime.Stack(buf, false)]
+			c.server.logf(&quot;http: panic serving %v: %v\n%s&quot;, c.remoteAddr, err, buf)
+		}
+		if !c.hijacked() {
+			c.close()
+			c.setState(c.rwc, StateClosed)
+		}
+	}()
+
+	if tlsConn, ok := c.rwc.(*tls.Conn); ok {
+		if d := c.server.ReadTimeout; d != 0 {
+			c.rwc.SetReadDeadline(time.Now().Add(d))
+		}
+		if d := c.server.WriteTimeout; d != 0 {
+			c.rwc.SetWriteDeadline(time.Now().Add(d))
+		}
+		if err := tlsConn.Handshake(); err != nil {
+			c.server.logf(&quot;http: TLS handshake error from %s: %v&quot;, c.rwc.RemoteAddr(), err)
+			return
+		}
+		c.tlsState = new(tls.ConnectionState)
+		*c.tlsState = tlsConn.ConnectionState()
+		if proto := c.tlsState.NegotiatedProtocol; validNPN(proto) {
+			if fn := c.server.TLSNextProto[proto]; fn != nil {
+				h := initNPNRequest{tlsConn, serverHandler{c.server}}
+				fn(c.server, tlsConn, h)
+			}
+			return
+		}
+	}
+
+	c.r = &amp;amp;connReader{r: c.rwc}
+	c.bufr = newBufioReader(c.r)
+	c.bufw = newBufioWriterSize(checkConnErrorWriter{c}, 4&amp;lt;&amp;lt;10)
+
+	for {
+		w, err := c.readRequest()
+		if c.r.remain != c.server.initialReadLimitSize() {
+			// If we read any bytes off the wire, we're active.
+			c.setState(c.rwc, StateActive)
+		}
+		if err != nil {
+			if err == errTooLarge {
+				// Their HTTP client may or may not be
+				// able to read this if we're
+				// responding to them and hanging up
+				// while they're still writing their
+				// request.  Undefined behavior.
+				io.WriteString(c.rwc, &quot;HTTP/1.1 431 Request Header Fields Too Large\r\nContent-Type: text/plain\r\nConnection: close\r\n\r\n431 Request Header Fields Too Large&quot;)
+				c.closeWriteAndWait()
+				return
+			}
+			if err == io.EOF {
+				return // don't reply
+			}
+			if neterr, ok := err.(net.Error); ok &amp;amp;&amp;amp; neterr.Timeout() {
+				return // don't reply
+			}
+			var publicErr string
+			if v, ok := err.(badRequestError); ok {
+				publicErr = &quot;: &quot; + string(v)
+			}
+			io.WriteString(c.rwc, &quot;HTTP/1.1 400 Bad Request\r\nContent-Type: text/plain\r\nConnection: close\r\n\r\n400 Bad Request&quot;+publicErr)
+			return
+		}
+
+		// Expect 100 Continue support
+		req := w.req
+		if req.expectsContinue() {
+			if req.ProtoAtLeast(1, 1) &amp;amp;&amp;amp; req.ContentLength != 0 {
+				// Wrap the Body reader with one that replies on the connection
+				req.Body = &amp;amp;expectContinueReader{readCloser: req.Body, resp: w}
+			}
+		} else if req.Header.get(&quot;Expect&quot;) != &quot;&quot; {
+			w.sendExpectationFailed()
+			return
+		}
+
+		// HTTP cannot have multiple simultaneous active requests.[*]
+		// Until the server replies to this request, it can't read another,
+		// so we might as well run the handler in this goroutine.
+		// [*] Not strictly true: HTTP pipelining.  We could let them all process
+		// in parallel even if their responses need to be serialized.
+		serverHandler{c.server}.ServeHTTP(w, w.req)
+		if c.hijacked() {
+			return
+		}
+		w.finishRequest()
+		if !w.shouldReuseConnection() {
+			if w.requestBodyLimitHit || w.closedRequestBodyEarly() {
+				c.closeWriteAndWait()
+			}
+			return
+		}
+		c.setState(c.rwc, StateIdle)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;类似的, 我们重点关注for循环部分并将其简化为:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for{
+  w, err := c.readRequest()
+  ...
+  serverHandler{c.server}.ServeHTTP(w, w.req)
+  ...
+  w.finishRequest()
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;对于同一个连接, 循环地执行读取请求, 处理请求, 完成请求三个操作&lt;/p&gt;
+
+&lt;p&gt;对于其中三个操作, 我们重点看处理请求部分&lt;/p&gt;
+
+&lt;p&gt;即: &lt;code class=&quot;highlighter-rouge&quot;&gt;serverHandler{c.server}.ServeHTTP(w, w.req)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;该语句调用了 serverHandler.ServeHTTP 方法&lt;/p&gt;
+
+&lt;h3 id=&quot;serverhandlerservehttp&quot;&gt;serverHandler.ServeHTTP&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func (sh serverHandler) ServeHTTP(rw ResponseWriter, req *Request) {
+    handler := sh.srv.Handler
+    if handler == nil {
+        handler = DefaultServeMux
+    }
+    if req.RequestURI == &quot;*&quot; &amp;amp;&amp;amp; req.Method == &quot;OPTIONS&quot; {
+        handler = globalOptionsHandler{}
+    }
+    handler.ServeHTTP(rw, req)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;serverHandler.ServeHTTP中,&lt;/p&gt;
+
+&lt;p&gt;根据我们在一开始调用http.ListenAndServe函数时传入的handler参数来确定 handler (ServeMux结构体类型), 若传入为 &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;, 则 handler 为默认的 DefaultServeMux,
+然后调用 ServeMux.ServeHTTP 方法 (receiver 为handler, 本例中即为 DefaultServeMux)&lt;/p&gt;
+
+&lt;h3 id=&quot;servemuxservehttp&quot;&gt;ServeMux.ServeHTTP&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// ServeHTTP dispatches the request to the handler whose
+// pattern most closely matches the request URL.
+func (mux *ServeMux) ServeHTTP(w ResponseWriter, r *Request) {
+	if r.RequestURI == &quot;*&quot; {
+		if r.ProtoAtLeast(1, 1) {
+			w.Header().Set(&quot;Connection&quot;, &quot;close&quot;)
+		}
+		w.WriteHeader(StatusBadRequest)
+		return
+	}
+	h, _ := mux.Handler(r)
+	h.ServeHTTP(w, r)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ServeMux.ServeHTTP中,&lt;/p&gt;
+
+&lt;p&gt;我们主要关注下面两行代码:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;h, _ := mux.Handler(r)
+h.ServeHTTP(w, r)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;第一行代码 调用了 ServeMux.Handler 方法 (此处 receiver 为 DefaultServeMux), 传入请求 &lt;code class=&quot;highlighter-rouge&quot;&gt;r&lt;/code&gt;, 返回相应的逻辑处理函数 (HandlerFunc 类型)&lt;/p&gt;
+
+&lt;p&gt;第二行代码 则是执行返回的 handler 的 ServeHTTP 方法(即 &lt;code class=&quot;highlighter-rouge&quot;&gt;HandlerFunc.ServeHTTP&lt;/code&gt;, 该方法在前面的 &lt;code class=&quot;highlighter-rouge&quot;&gt;内置结构体 &amp;amp; 类型 定义&lt;/code&gt; 那节给出, 实际上就是执行了 receiver 本身)&lt;/p&gt;
+
+&lt;p&gt;至于 ServeMux.Handler, 其具体实现如下所示&lt;/p&gt;
+
+&lt;h3 id=&quot;servemuxhandler&quot;&gt;ServeMux.Handler&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func (mux *ServeMux) Handler(r *Request) (h Handler, pattern string) {
+	if r.Method != &quot;CONNECT&quot; {
+		if p := cleanPath(r.URL.Path); p != r.URL.Path {
+			_, pattern = mux.handler(r.Host, p)
+			url := *r.URL
+			url.Path = p
+			return RedirectHandler(url.String(), StatusMovedPermanently), pattern
+		}
+	}
+
+	return mux.handler(r.Host, r.URL.Path)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ServeMux.Handler中,&lt;/p&gt;
+
+&lt;p&gt;调用了 ServeMux.handler 方法(receiver 为 DefaultServeMux), 传入请求 &lt;code class=&quot;highlighter-rouge&quot;&gt;r&lt;/code&gt; 的 主机名 &amp;amp; URL的路径部分&lt;/p&gt;
+
+&lt;h3 id=&quot;servemuxhandler-1&quot;&gt;ServeMux.handler&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func (mux *ServeMux) handler(host, path string) (h Handler, pattern string) {
+    mux.mu.RLock()
+    defer mux.mu.RUnlock()
+
+    // Host-specific pattern takes precedence over generic ones
+    if mux.hosts {
+        h, pattern = mux.match(host + path)
+    }
+    if h == nil {
+        h, pattern = mux.match(path)
+    }
+    if h == nil {
+        h, pattern = NotFoundHandler(), &quot;&quot;
+    }
+    return
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ServeMux.Handler中,&lt;/p&gt;
+
+&lt;p&gt;调用 ServeMux.match 方法, 传入相应的请求路径, 返回 匹配的 handler 和 pattern&lt;/p&gt;
+
+&lt;h3 id=&quot;servemuxmatch&quot;&gt;ServeMux.match&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func (mux *ServeMux) match(path string) (h Handler, pattern string) {
+	var n = 0
+	for k, v := range mux.m {
+		if !pathMatch(k, path) {
+			continue
+		}
+		if h == nil || len(k) &amp;gt; n {
+			n = len(k)
+			h = v.h
+			pattern = v.pattern
+		}
+	}
+	return
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ServeMux.match中,&lt;/p&gt;
+
+&lt;p&gt;遍历 receiver (此处为 DefaultServeMux) 的 map, 对于输入的路径, 找到能与之相匹配的已注册pattern, 返回 相应的 handler 和 pattern&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;最后, 重新整理一下主要的函数调用过程:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;main
+├── http.HandleFunc
+|   └── ServeMux.HandleFunc
+|       └── ServeMux.Handle
+└── http.ListenAndServe
+    └── Server.ListenAndServe
+        ├── net.Listen
+        └── Server.Serve
+            ├── Listener.Accept
+            ├── Server.newConn
+            └── conn.serve
+                ├── conn.readRequest
+                ├── serverHandler.ServeHTTP
+                |   └── ServeMux.ServeHTTP
+                |       ├── ServeMux.Handler
+                |       |   └── ServeMux.handler
+                |       |       └── ServeMux.match
+                |       └── HandlerFunc.ServeHTTP
+                └── response.finishRequest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;至此, 对于实现web服务器搭建部分的http源码就基本分析完啦。&lt;/p&gt;
+
+&lt;p&gt;注: 代码高亮暂时存在问题, 等以后解决了再更新。(貌似暂不支持golang语法高亮)&lt;/p&gt;
+</description>
+        <pubDate>Thu, 16 Nov 2017 23:00:00 +0000</pubDate>
+        <link>http://localhost:4000/2017/11/16/go-http-src-analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/16/go-http-src-analysis/</guid>
+        
+        <category>go</category>
+        
+        <category>http</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Welcome to Yezh Blog</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;“This is the beginning.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;Yezh 的 blog 开通啦!&lt;/p&gt;
+
+&lt;p&gt;现在开始, 我将不定期更新我的博客。&lt;/p&gt;
+
+&lt;p&gt;内容主要为技术帖。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+
+&lt;p&gt;一开始打算直接弄一个 CSDN 博客, 但是在注册时用户名老是重复, 不重复的又不好记, 于是就暂时搁置了。&lt;/p&gt;
+
+&lt;p&gt;后来发现 &lt;code class=&quot;highlighter-rouge&quot;&gt;Github Pages&lt;/code&gt; 可以免费托管静态内容, 了解后发现并不难, 于是就开始正式搭建我的博客啦。&lt;/p&gt;
+
+&lt;p&gt;我采用的技术方案为: &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; + &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;其优点有：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可直接采用 &lt;strong&gt;Markdown&lt;/strong&gt; 书写&lt;/li&gt;
+  &lt;li&gt;采用 Git workflow ，&lt;strong&gt;Git Commit 即 Blog Post&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;免费无限空间 (不用自己折腾主机)&lt;/li&gt;
+  &lt;li&gt;可自定义域名 (只需简单改改 DNS, 加个 CNAME 就好了)&lt;/li&gt;
+  &lt;li&gt;Jekyll 自定制实现容易&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;博客搭建的过程主要参照了 &lt;a href=&quot;http://qiubaiying.top/2017/02/06/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&quot;&gt;利用 GitHub Pages 快速搭建博客&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;致谢&quot;&gt;致谢&lt;/h2&gt;
+
+&lt;p&gt;最后, 感谢 &lt;a href=&quot;https://github.com/huxpro&quot;&gt;Huxpro&lt;/a&gt; 提供的博客模板 和 &lt;a href=&quot;https://github.com/qiubaiying&quot;&gt;qiubaiying&lt;/a&gt; 的博客搭建教程。&lt;/p&gt;
+</description>
+        <pubDate>Wed, 15 Nov 2017 09:00:00 +0000</pubDate>
+        <link>http://localhost:4000/2017/11/15/hello-blog/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/15/hello-blog/</guid>
+        
+        <category>blog</category>
         
         
       </item>

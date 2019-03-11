@@ -7,7 +7,7 @@ author:     "Yezh"
 header-img: "img/vue.png"
 header-mask:  true
 catalog:      true
-published:    true
+published:    false
 tags:
     - JS
     - vue
